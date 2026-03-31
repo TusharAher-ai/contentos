@@ -1,0 +1,1681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ContentOS — Content Strategy Builder for Creators</title>
+  <meta name="description" content="Build a personalized weekly content strategy in minutes. Get content ideas, posting schedules, growth tips, and more — tailored to your niche, platform, and goals." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --ink: #0d0d0d;
+  --ink-2: #1a1a1a;
+  --ink-3: #2a2a2a;
+  --paper: #f5f0e8;
+  --paper-2: #ede8de;
+  --paper-3: #e4dfd4;
+  --accent: #e8533a;
+  --accent-2: #f0a500;
+  --accent-3: #3a8fe8;
+  --green: #2eb872;
+  --text-main: #1a1a1a;
+  --text-muted: #6b6459;
+  --text-light: #9b948a;
+  --border: rgba(13,13,13,0.12);
+  --border-strong: rgba(13,13,13,0.25);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-md: 0 8px 32px rgba(0,0,0,0.1);
+  --shadow-lg: 0 24px 64px rgba(0,0,0,0.14);
+  --radius: 12px;
+  --radius-lg: 20px;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-serif: 'DM Serif Display', serif;
+  --font-body: 'DM Sans', sans-serif;
+  --transition: 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--paper);color:var(--text-main);font-size:16px;line-height:1.65;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;border:none;background:none;font-family:var(--font-body)}
+.hidden{display:none!important}
+
+/* HEADER */
+.site-header{position:sticky;top:0;z-index:100;background:rgba(245,240,232,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.header-inner{max-width:1280px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-mark{width:34px;height:34px;background:var(--ink);color:var(--paper);font-family:var(--font-display);font-size:20px;display:flex;align-items:center;justify-content:center;border-radius:8px}
+.logo-text{font-family:var(--font-display);font-size:22px;letter-spacing:2px;color:var(--ink)}
+.header-nav{display:flex;align-items:center;gap:24px}
+.header-nav a{font-size:14px;font-weight:500;color:var(--text-muted);transition:color var(--transition)}
+.header-nav a:hover{color:var(--ink)}
+
+
+/* HERO */
+.hero{max-width:900px;margin:0 auto;padding:100px 32px 80px;text-align:center}
+.hero-badge{display:inline-block;background:var(--accent-2);color:var(--ink);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;padding:5px 14px;border-radius:100px;margin-bottom:28px}
+.hero-title{font-family:var(--font-display);font-size:clamp(52px,9vw,108px);line-height:0.92;letter-spacing:2px;color:var(--ink);margin-bottom:28px}
+.hero-title em{font-family:var(--font-serif);font-style:italic;color:var(--accent);letter-spacing:0}
+.hero-title-accent{color:var(--text-muted);font-size:0.72em}
+.hero-sub{font-size:18px;font-weight:300;color:var(--text-muted);max-width:560px;margin:0 auto 40px;line-height:1.7}
+.btn-start{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--paper);font-size:16px;font-weight:600;padding:16px 36px;border-radius:100px;transition:all var(--transition);box-shadow:0 4px 20px rgba(0,0,0,0.18);letter-spacing:.3px;cursor:pointer}
+.btn-start:hover{background:var(--accent);transform:translateY(-2px);box-shadow:0 8px 32px rgba(232,83,58,0.3)}
+.btn-arrow{font-size:20px;transition:transform var(--transition)}
+.btn-start:hover .btn-arrow{transform:translateX(4px)}
+.hero-stats{display:flex;align-items:center;justify-content:center;gap:24px;margin-top:40px;color:var(--text-muted);font-size:14px;font-weight:500}
+.hero-stats strong{color:var(--ink);font-size:18px;display:block}
+.stat-div{width:1px;height:32px;background:var(--border-strong)}
+
+/* HOW IT WORKS */
+.how-it-works{max-width:1100px;margin:0 auto;padding:80px 32px;border-top:1px solid var(--border)}
+.section-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:var(--accent);margin-bottom:16px}
+.section-title{font-family:var(--font-serif);font-size:clamp(28px,4vw,44px);font-weight:400;color:var(--ink);margin-bottom:48px;max-width:520px}
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.step-card{background:var(--paper-2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;transition:transform var(--transition),box-shadow var(--transition)}
+.step-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.step-num{font-family:var(--font-display);font-size:48px;color:var(--paper-3);letter-spacing:2px;line-height:1;margin-bottom:16px}
+.step-card h3{font-family:var(--font-serif);font-size:20px;font-weight:400;margin-bottom:10px;color:var(--ink)}
+.step-card p{font-size:14px;color:var(--text-muted);line-height:1.7}
+
+/* BUILDER */
+.builder-section{background:var(--ink);padding:80px 32px;position:relative}
+.builder-wrap{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+
+/* FORM PANEL */
+.builder-form-panel{background:var(--paper);border-radius:var(--radius-lg);padding:40px;position:sticky;top:80px}
+.form-header{margin-bottom:36px}
+.form-title{font-family:var(--font-serif);font-size:30px;font-weight:400;color:var(--ink);margin-bottom:20px}
+.form-title em{color:var(--accent)}
+.progress-bar-wrap{height:4px;background:var(--paper-3);border-radius:4px;overflow:hidden;margin-bottom:8px}
+.progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:4px;width:25%;transition:width .4s cubic-bezier(.4,0,.2,1)}
+.progress-label{font-size:12px;color:var(--text-light);font-weight:500}
+
+/* STEPS */
+.form-step{display:none;animation:fadeSlideIn .3s ease}
+.form-step.active{display:block}
+@keyframes fadeSlideIn{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:translateX(0)}}
+.step-question{margin-bottom:24px}
+.step-icon{font-size:28px;display:block;margin-bottom:8px}
+.step-question h3{font-family:var(--font-serif);font-size:22px;font-weight:400;color:var(--ink);margin-bottom:6px}
+.step-hint{font-size:14px;color:var(--text-muted)}
+
+/* CHIPS */
+.chip-grid{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px}
+.chip{background:var(--paper-2);border:1.5px solid var(--border);color:var(--text-main);font-size:13px;font-weight:500;padding:8px 14px;border-radius:100px;transition:all var(--transition);font-family:var(--font-body);cursor:pointer}
+.chip:hover{border-color:var(--ink);background:var(--paper-3)}
+.chip.selected{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.custom-input-wrap{margin-bottom:16px}
+.custom-input{width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:var(--radius);background:var(--paper-2);font-family:var(--font-body);font-size:14px;color:var(--text-main);outline:none;transition:border-color var(--transition)}
+.custom-input:focus{border-color:var(--accent)}
+.custom-input::placeholder{color:var(--text-light)}
+
+/* GOAL CARDS */
+.goal-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.goal-card{display:flex;align-items:flex-start;gap:12px;background:var(--paper-2);border:1.5px solid var(--border);border-radius:var(--radius);padding:16px;text-align:left;transition:all var(--transition);font-family:var(--font-body);cursor:pointer}
+.goal-card:hover{border-color:var(--ink);transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+.goal-card.selected{border-color:var(--accent);background:rgba(232,83,58,0.06)}
+.goal-icon{font-size:22px;flex-shrink:0}
+.goal-info strong{display:block;font-size:14px;font-weight:600;color:var(--ink);margin-bottom:3px}
+.goal-info p{font-size:12px;color:var(--text-muted);line-height:1.5}
+
+/* PLATFORM */
+.platform-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px}
+.platform-chip{display:flex;flex-direction:column;align-items:center;gap:8px;background:var(--paper-2);border:1.5px solid var(--border);border-radius:var(--radius);padding:14px 8px;font-size:12px;font-weight:500;color:var(--text-muted);transition:all var(--transition);font-family:var(--font-body);cursor:pointer}
+.platform-chip img{width:28px;height:28px}
+.platform-chip:hover{border-color:var(--ink);color:var(--ink);transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+.platform-chip.selected{border-color:var(--accent-3);background:rgba(58,143,232,0.08);color:var(--accent-3)}
+
+/* TIME */
+.time-options{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.time-chip{background:var(--paper-2);border:1.5px solid var(--border);border-radius:var(--radius);padding:18px 16px;text-align:left;transition:all var(--transition);font-family:var(--font-body);cursor:pointer}
+.time-chip:hover{border-color:var(--ink);box-shadow:var(--shadow-sm);transform:translateY(-1px)}
+.time-chip.selected{border-color:var(--green);background:rgba(46,184,114,0.08)}
+.time-label{font-size:15px;font-weight:600;color:var(--ink);display:block;margin-bottom:3px}
+.time-desc{font-size:12px;color:var(--text-muted)}
+
+/* ERRORS */
+.step-error{color:var(--accent);font-size:12px;font-weight:500;margin-bottom:12px}
+
+/* BUTTONS */
+.btn-next{background:var(--ink);color:var(--paper);font-size:15px;font-weight:600;padding:13px 28px;border-radius:100px;transition:all var(--transition);font-family:var(--font-body);display:inline-flex;align-items:center;gap:8px;cursor:pointer}
+.btn-next:hover{background:var(--accent);transform:translateY(-1px)}
+.btn-back{background:transparent;color:var(--text-muted);font-size:14px;font-weight:500;padding:10px;transition:color var(--transition);font-family:var(--font-body);cursor:pointer}
+.btn-back:hover{color:var(--ink)}
+.step-nav{display:flex;align-items:center;justify-content:space-between}
+.btn-generate{background:linear-gradient(135deg,var(--accent),#c93a24);color:#fff;font-size:15px;font-weight:700;padding:14px 28px;border-radius:100px;transition:all var(--transition);font-family:var(--font-body);display:inline-flex;align-items:center;gap:10px;box-shadow:0 4px 20px rgba(232,83,58,0.35);letter-spacing:.3px;cursor:pointer}
+.btn-generate:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(232,83,58,0.45)}
+.btn-generate:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.spinner{width:18px;height:18px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* OUTPUT PANEL */
+.builder-output-panel{background:var(--paper);border-radius:var(--radius-lg);padding:40px;min-height:480px;display:flex;flex-direction:column}
+.output-placeholder{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:16px;color:var(--text-light);padding:60px 20px}
+.placeholder-icon{font-size:48px;opacity:.5}
+.output-placeholder p{font-size:15px;max-width:260px;line-height:1.6}
+.output-content{width:100%}
+.output-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:28px;gap:16px}
+.output-badge{display:inline-block;background:var(--accent);color:#fff;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;padding:4px 12px;border-radius:100px;margin-bottom:8px}
+.output-title{font-family:var(--font-serif);font-size:24px;font-weight:400;color:var(--ink);margin-bottom:4px}
+.output-meta{font-size:13px;color:var(--text-muted)}
+.output-actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap}
+.action-btn{background:var(--paper-2);border:1px solid var(--border);color:var(--text-muted);font-size:12px;font-weight:600;padding:8px 12px;border-radius:var(--radius);transition:all var(--transition);white-space:nowrap;font-family:var(--font-body);cursor:pointer}
+.action-btn:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+/* CALENDAR */
+.weekly-calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:32px}
+.day-card{background:var(--paper-2);border:1px solid var(--border);border-radius:var(--radius);padding:12px 6px;text-align:center;animation:fadeUp .4s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.day-card.rest-day{background:transparent;border-style:dashed;opacity:.5}
+.day-card.active-day{border-color:var(--accent);background:rgba(232,83,58,0.06)}
+.day-name{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-light);margin-bottom:6px}
+.day-type-badge{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:2px 5px;border-radius:4px;margin-bottom:8px;display:inline-block}
+.badge-educational{background:rgba(58,143,232,0.15);color:var(--accent-3)}
+.badge-viral{background:rgba(232,83,58,0.15);color:var(--accent)}
+.badge-storytelling{background:rgba(240,165,0,0.15);color:var(--accent-2)}
+.badge-engagement{background:rgba(46,184,114,0.15);color:var(--green)}
+.badge-promotional{background:rgba(150,100,200,0.15);color:#9664c8}
+.badge-rest{background:var(--paper-3);color:var(--text-light)}
+.day-idea{font-size:10px;color:var(--text-muted);line-height:1.5;margin-bottom:6px}
+.day-time{font-size:9px;font-weight:600;color:var(--text-light)}
+
+/* CONTENT MIX */
+.output-section{margin-bottom:28px}
+.output-section-title{font-family:var(--font-serif);font-size:18px;font-weight:400;color:var(--ink);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.content-mix{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.mix-item{background:var(--paper-2);border:1px solid var(--border);border-radius:var(--radius);padding:16px;text-align:center}
+.mix-icon{font-size:22px;margin-bottom:8px}
+.mix-type{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.mix-pct{font-family:var(--font-display);font-size:28px;color:var(--accent);letter-spacing:1px;line-height:1;margin-bottom:4px}
+.mix-desc{font-size:11px;color:var(--text-muted)}
+
+/* GROWTH TIPS */
+.growth-tips{display:grid;gap:10px}
+.tip-item{display:flex;gap:14px;align-items:flex-start;background:var(--paper-2);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px}
+.tip-num{font-family:var(--font-display);font-size:22px;color:var(--paper-3);line-height:1;flex-shrink:0;width:28px}
+.tip-content strong{font-size:13px;font-weight:600;color:var(--ink);display:block;margin-bottom:3px}
+.tip-content p{font-size:12px;color:var(--text-muted);line-height:1.55}
+
+/* SCHEDULE */
+.posting-schedule{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.schedule-item{background:var(--paper-2);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;display:flex;align-items:center;gap:12px}
+.schedule-dot{width:8px;height:8px;border-radius:50%;background:var(--green);flex-shrink:0}
+.schedule-day{font-weight:700;font-size:13px;color:var(--ink);min-width:80px}
+.schedule-time{font-size:13px;color:var(--text-muted)}
+
+/* PREMIUM */
+
+
+/* SECTION DESC */
+.section-desc{font-size:13px;color:var(--text-muted);margin-bottom:16px;line-height:1.6}
+
+/* 30-DAY CALENDAR */
+.month-calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.month-day{background:var(--paper-2);border:1px solid var(--border);border-radius:8px;padding:8px 6px;text-align:center;font-size:10px;transition:transform var(--transition)}
+.month-day:hover{transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+.month-day-num{font-family:var(--font-display);font-size:16px;color:var(--text-light);line-height:1;margin-bottom:4px}
+.month-day-type{font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:1px 4px;border-radius:3px;margin-bottom:4px;display:inline-block}
+.month-day-idea{font-size:9px;color:var(--text-muted);line-height:1.4}
+.month-day.week-header{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.month-day.week-header .month-day-num{color:var(--paper);font-size:11px}
+.month-day.week-header .month-day-idea{color:rgba(245,240,232,0.6);font-weight:600}
+.month-day.rest-m{opacity:.45;border-style:dashed}
+
+/* ALGO CARDS */
+.algo-cards{display:grid;gap:12px}
+.algo-card{background:var(--paper-2);border:1px solid var(--border);border-radius:var(--radius);padding:18px;display:flex;gap:16px;align-items:flex-start}
+.algo-icon{font-size:24px;flex-shrink:0;width:36px;text-align:center}
+.algo-body strong{font-size:14px;font-weight:700;color:var(--ink);display:block;margin-bottom:4px}
+.algo-body p{font-size:12px;color:var(--text-muted);line-height:1.6}
+.algo-tag{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:2px 8px;border-radius:100px;margin-top:6px}
+.algo-tag.boost{background:rgba(46,184,114,0.15);color:var(--green)}
+.algo-tag.avoid{background:rgba(232,83,58,0.15);color:var(--accent)}
+.algo-tag.signal{background:rgba(58,143,232,0.15);color:var(--accent-3)}
+
+/* HOOKS GRID */
+.hooks-grid{display:grid;gap:10px}
+.hook-item{background:var(--paper-2);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;display:flex;gap:12px;align-items:flex-start}
+.hook-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);flex-shrink:0;min-width:70px;padding-top:2px}
+.hook-text{font-size:13px;color:var(--ink);line-height:1.6;font-style:italic}
+.hook-text span{font-style:normal;font-weight:700;color:var(--accent)}
+
+/* MONETIZATION STAGES */
+.mono-stages{display:grid;gap:0}
+.mono-stage{background:var(--paper-2);border:1px solid var(--border);padding:20px;display:flex;gap:16px;align-items:flex-start;position:relative}
+.mono-stage:first-child{border-radius:var(--radius) var(--radius) 0 0}
+.mono-stage:last-child{border-radius:0 0 var(--radius) var(--radius)}
+.mono-stage+.mono-stage{border-top:none}
+.mono-stage-line{position:absolute;left:39px;top:48px;bottom:-12px;width:2px;background:var(--border);z-index:0}
+.mono-stage:last-child .mono-stage-line{display:none}
+.mono-num{width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--paper);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1}
+.mono-body{flex:1}
+.mono-range{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:4px}
+.mono-body strong{font-size:14px;font-weight:700;color:var(--ink);display:block;margin-bottom:6px}
+.mono-body p{font-size:12px;color:var(--text-muted);line-height:1.6}
+.mono-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.mono-action-tag{font-size:11px;font-weight:600;background:var(--paper-3);border:1px solid var(--border);padding:3px 10px;border-radius:100px;color:var(--text-muted)}
+
+/* TRACKER */
+.tracker-wrap{display:grid;gap:16px}
+.tracker-add{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;background:var(--paper-2);border:1px solid var(--border);border-radius:var(--radius);padding:16px}
+.tracker-field{display:flex;flex-direction:column;gap:4px;flex:1;min-width:100px}
+.tracker-field label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted)}
+.tracker-input{padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;background:var(--paper);font-family:var(--font-body);font-size:13px;color:var(--text-main);outline:none;transition:border-color var(--transition)}
+.tracker-input:focus{border-color:var(--accent)}
+.btn-log{background:var(--ink);color:var(--paper);font-size:13px;font-weight:600;padding:10px 20px;border-radius:8px;font-family:var(--font-body);cursor:pointer;transition:all var(--transition);white-space:nowrap;align-self:flex-end}
+.btn-log:hover{background:var(--accent)}
+.tracker-table-wrap{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--border)}
+.tracker-table{width:100%;border-collapse:collapse;font-size:12px}
+.tracker-table th{background:var(--ink);color:var(--paper);padding:10px 12px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;white-space:nowrap}
+.tracker-table td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--text-main)}
+.tracker-table tr:last-child td{border-bottom:none}
+.tracker-table tr:hover td{background:var(--paper-2)}
+.tracker-empty{text-align:center;padding:24px;color:var(--text-light);font-size:13px}
+.btn-del-row{background:none;border:none;cursor:pointer;color:var(--text-light);font-size:14px;padding:2px 6px;transition:color var(--transition)}
+.btn-del-row:hover{color:var(--accent)}
+
+/* SAVED */
+.saved-section{max-width:1100px;margin:0 auto;padding:60px 32px}
+.saved-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.saved-card{background:var(--paper-2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;transition:all var(--transition)}
+.saved-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.saved-card-title{font-family:var(--font-serif);font-size:18px;margin-bottom:6px;color:var(--ink)}
+.saved-card-meta{font-size:12px;color:var(--text-muted);margin-bottom:16px}
+.saved-card-actions{display:flex;gap:8px}
+.btn-load,.btn-delete{font-size:12px;font-weight:600;padding:7px 14px;border-radius:8px;font-family:var(--font-body);transition:all var(--transition);cursor:pointer}
+.btn-load{background:var(--ink);color:var(--paper);border:none}
+.btn-load:hover{background:var(--accent)}
+.btn-delete{background:transparent;border:1px solid var(--border);color:var(--text-muted)}
+.btn-delete:hover{border-color:var(--accent);color:var(--accent)}
+
+/* FOOTER */
+.site-footer{background:var(--ink);padding:60px 32px;text-align:center}
+.footer-inner{max-width:600px;margin:0 auto}
+.site-footer .logo{justify-content:center;margin-bottom:16px}
+.site-footer .logo-mark{background:var(--paper);color:var(--ink)}
+.site-footer .logo-text{color:var(--paper)}
+.footer-tagline{font-size:16px;color:rgba(245,240,232,0.5);margin:16px 0 8px;font-weight:300}
+.footer-copy{font-size:13px;color:rgba(245,240,232,0.3)}
+
+/* TOAST */
+.toast{position:fixed;bottom:32px;right:32px;background:var(--ink);color:var(--paper);padding:12px 20px;border-radius:100px;font-size:14px;font-weight:500;box-shadow:var(--shadow-lg);transform:translateY(20px);opacity:0;transition:all .3s ease;z-index:999;pointer-events:none}
+.toast.show{transform:translateY(0);opacity:1}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .builder-wrap{grid-template-columns:1fr}
+  .builder-form-panel{position:static}
+  .weekly-calendar{grid-template-columns:repeat(4,1fr)}
+  .steps-grid{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .header-inner{padding:14px 20px}
+  .hero{padding:60px 20px 50px}
+  .how-it-works,.builder-section,.saved-section{padding:60px 20px}
+  .builder-form-panel,.builder-output-panel{padding:24px}
+  .goal-cards{grid-template-columns:1fr}
+  .weekly-calendar{grid-template-columns:repeat(2,1fr)}
+  .content-mix{grid-template-columns:1fr 1fr}
+  .posting-schedule{grid-template-columns:1fr}
+
+  .output-header{flex-direction:column}
+}
+@media(max-width:480px){
+  .hero-title{font-size:50px}
+  .platform-grid{grid-template-columns:repeat(2,1fr)}
+  .time-options{grid-template-columns:1fr}
+  .content-mix{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo">
+      <span class="logo-mark">C</span>
+      <span class="logo-text">ContentOS</span>
+    </div>
+    <nav class="header-nav">
+      <a href="#how-it-works">How it works</a>
+
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-badge">Free Content Strategy Tool</div>
+  <h1 class="hero-title">
+    Your <em>complete</em><br/>content system.<br/>
+    <span class="hero-title-accent">Built in 60 seconds.</span>
+  </h1>
+  <p class="hero-sub">Answer 4 quick questions. Get a personalized weekly content plan with post ideas, schedules, content types, and growth strategies — no fluff, no generic advice.</p>
+  <button class="btn-start" onclick="scrollToBuilder()">
+    Build My Strategy
+    <span class="btn-arrow">→</span>
+  </button>
+  <div class="hero-stats">
+    <div class="stat"><strong>4</strong> Questions</div>
+    <div class="stat-div"></div>
+    <div class="stat"><strong>7-Day</strong> Plan</div>
+    <div class="stat-div"></div>
+    <div class="stat"><strong>100%</strong> Free</div>
+  </div>
+</section>
+
+<section class="how-it-works" id="how-it-works">
+  <div class="section-label">The Process</div>
+  <h2 class="section-title">Three steps to a consistent content system</h2>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">01</div>
+      <h3>Tell us about yourself</h3>
+      <p>Share your niche, platform, goal, and how much time you have. Takes under a minute.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">02</div>
+      <h3>We build your system</h3>
+      <p>The engine crafts a personalized weekly plan with content types, ideas, and timing built for your goal.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">03</div>
+      <h3>Execute & grow</h3>
+      <p>Copy your plan, follow the schedule, and watch your consistency — and your audience — compound over time.</p>
+    </div>
+  </div>
+</section>
+
+<section class="builder-section" id="builder">
+  <div class="builder-wrap">
+
+    <!-- FORM PANEL -->
+    <div class="builder-form-panel">
+      <div class="form-header">
+        <div class="section-label" style="color:var(--accent)">Strategy Builder</div>
+        <h2 class="form-title">Let's build your <em>content OS</em></h2>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <div class="progress-label" id="progressLabel">Step 1 of 4</div>
+      </div>
+
+      <!-- STEP 1 -->
+      <div class="form-step active" id="step1">
+        <div class="step-question">
+          <span class="step-icon">🎯</span>
+          <h3>What's your niche?</h3>
+          <p class="step-hint">Choose the topic area you create content about.</p>
+        </div>
+        <div class="chip-grid" id="nicheChips">
+          <button type="button" class="chip" data-value="students">🎓 Students & Education</button>
+          <button type="button" class="chip" data-value="finance">💰 Finance & Investing</button>
+          <button type="button" class="chip" data-value="fitness">💪 Fitness & Health</button>
+          <button type="button" class="chip" data-value="tech">💻 Tech & Coding</button>
+          <button type="button" class="chip" data-value="business">🚀 Business</button>
+          <button type="button" class="chip" data-value="food">🍳 Food & Cooking</button>
+          <button type="button" class="chip" data-value="lifestyle">✨ Lifestyle & Vlogs</button>
+          <button type="button" class="chip" data-value="fashion">👗 Fashion & Beauty</button>
+          <button type="button" class="chip" data-value="gaming">🎮 Gaming</button>
+          <button type="button" class="chip" data-value="travel">✈️ Travel</button>
+          <button type="button" class="chip" data-value="mindset">🧠 Mindset & Self-Help</button>
+          <button type="button" class="chip" data-value="art">🎨 Art & Design</button>
+        </div>
+        <div class="custom-input-wrap">
+          <input type="text" id="customNiche" placeholder="Or type your own niche…" class="custom-input" />
+        </div>
+        <div class="step-error hidden" id="nicheError">Please select or enter your niche.</div>
+        <button type="button" class="btn-next" id="next1">Next <span>→</span></button>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="form-step" id="step2">
+        <div class="step-question">
+          <span class="step-icon">🏆</span>
+          <h3>What's your primary content goal?</h3>
+          <p class="step-hint">This shapes what type of content we recommend.</p>
+        </div>
+        <div class="goal-cards" id="goalCards">
+          <button type="button" class="goal-card" data-value="growth">
+            <div class="goal-icon">📈</div>
+            <div class="goal-info"><strong>Audience Growth</strong><p>Maximize reach, followers, and subscribers fast.</p></div>
+          </button>
+          <button type="button" class="goal-card" data-value="engagement">
+            <div class="goal-icon">💬</div>
+            <div class="goal-info"><strong>Deep Engagement</strong><p>Build a loyal community that talks back.</p></div>
+          </button>
+          <button type="button" class="goal-card" data-value="monetization">
+            <div class="goal-icon">💸</div>
+            <div class="goal-info"><strong>Monetization</strong><p>Turn content into revenue — brand deals, products, courses.</p></div>
+          </button>
+          <button type="button" class="goal-card" data-value="authority">
+            <div class="goal-icon">🏛️</div>
+            <div class="goal-info"><strong>Authority & Brand</strong><p>Become the go-to expert in your niche.</p></div>
+          </button>
+        </div>
+        <div class="step-error hidden" id="goalError">Please select your goal.</div>
+        <div class="step-nav">
+          <button type="button" class="btn-back" id="back2">← Back</button>
+          <button type="button" class="btn-next" id="next2">Next <span>→</span></button>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="form-step" id="step3">
+        <div class="step-question">
+          <span class="step-icon">📱</span>
+          <h3>Which platform is your main focus?</h3>
+          <p class="step-hint">We'll tailor content formats to this platform.</p>
+        </div>
+        <div class="platform-grid" id="platformChips">
+          <button type="button" class="platform-chip" data-value="youtube">
+            <img src="https://img.icons8.com/color/48/youtube-play.png" alt="YouTube" />
+            <span>YouTube</span>
+          </button>
+          <button type="button" class="platform-chip" data-value="instagram">
+            <img src="https://img.icons8.com/color/48/instagram-new.png" alt="Instagram" />
+            <span>Instagram</span>
+          </button>
+          <button type="button" class="platform-chip" data-value="tiktok">
+            <img src="https://img.icons8.com/color/48/tiktok.png" alt="TikTok" />
+            <span>TikTok</span>
+          </button>
+          <button type="button" class="platform-chip" data-value="twitter">
+            <img src="https://img.icons8.com/color/48/twitterx--v1.png" alt="X/Twitter" />
+            <span>X / Twitter</span>
+          </button>
+          <button type="button" class="platform-chip" data-value="linkedin">
+            <img src="https://img.icons8.com/color/48/linkedin.png" alt="LinkedIn" />
+            <span>LinkedIn</span>
+          </button>
+          <button type="button" class="platform-chip" data-value="podcast">
+            <img src="https://img.icons8.com/color/48/microphone.png" alt="Podcast" />
+            <span>Podcast</span>
+          </button>
+          <button type="button" class="platform-chip" data-value="newsletter">
+            <img src="https://img.icons8.com/color/48/email-open.png" alt="Newsletter" />
+            <span>Newsletter</span>
+          </button>
+          <button type="button" class="platform-chip" data-value="threads">
+            <img src="https://img.icons8.com/color/48/threads.png" alt="Threads" />
+            <span>Threads</span>
+          </button>
+        </div>
+        <div class="step-error hidden" id="platformError">Please select a platform.</div>
+        <div class="step-nav">
+          <button type="button" class="btn-back" id="back3">← Back</button>
+          <button type="button" class="btn-next" id="next3">Next <span>→</span></button>
+        </div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="form-step" id="step4">
+        <div class="step-question">
+          <span class="step-icon">⏱️</span>
+          <h3>How much time can you dedicate per week?</h3>
+          <p class="step-hint">Be honest — we'll build a realistic, sustainable plan.</p>
+        </div>
+        <div class="time-options" id="timeChips">
+          <button type="button" class="time-chip" data-value="1-3">
+            <span class="time-label">1–3 hrs/week</span>
+            <span class="time-desc">Side hustler</span>
+          </button>
+          <button type="button" class="time-chip" data-value="4-7">
+            <span class="time-label">4–7 hrs/week</span>
+            <span class="time-desc">Part-time creator</span>
+          </button>
+          <button type="button" class="time-chip" data-value="8-14">
+            <span class="time-label">8–14 hrs/week</span>
+            <span class="time-desc">Serious creator</span>
+          </button>
+          <button type="button" class="time-chip" data-value="15+">
+            <span class="time-label">15+ hrs/week</span>
+            <span class="time-desc">Full-time mode</span>
+          </button>
+        </div>
+        <div class="step-error hidden" id="timeError">Please select your time availability.</div>
+        <div class="step-nav">
+          <button type="button" class="btn-back" id="back4">← Back</button>
+          <button type="button" class="btn-generate" id="generateBtn">
+            <span id="generateBtnText">✦ Generate My Plan</span>
+            <div class="spinner hidden" id="generateSpinner"></div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- OUTPUT PANEL -->
+    <div class="builder-output-panel" id="outputPanel">
+      <div class="output-placeholder" id="outputPlaceholder">
+        <div class="placeholder-icon">📋</div>
+        <p>Your personalized content strategy will appear here after you complete the 4 steps.</p>
+      </div>
+
+      <div class="output-content hidden" id="outputContent">
+        <div class="output-header">
+          <div>
+            <div class="output-badge" id="outputBadge">Your Strategy</div>
+            <h2 class="output-title" id="outputTitle">Weekly Content Plan</h2>
+            <p class="output-meta" id="outputMeta"></p>
+          </div>
+          <div class="output-actions">
+            <button class="action-btn" id="copyBtn">📋 Copy</button>
+            <button class="action-btn" id="regenBtn">🔄 Redo</button>
+            <button class="action-btn" id="saveBtn">💾 Save</button>
+          </div>
+        </div>
+
+        <div class="weekly-calendar" id="weeklyCalendar"></div>
+
+        <div class="output-section">
+          <h3 class="output-section-title">📐 Your Content Mix</h3>
+          <div class="content-mix" id="contentMix"></div>
+        </div>
+
+        <div class="output-section">
+          <h3 class="output-section-title">🚀 Growth Strategy Tips</h3>
+          <div class="growth-tips" id="growthTips"></div>
+        </div>
+
+        <div class="output-section">
+          <h3 class="output-section-title">📅 Optimal Posting Times</h3>
+          <div class="posting-schedule" id="postingSchedule"></div>
+        </div>
+
+        <div class="output-section">
+          <h3 class="output-section-title">🗓️ 30-Day Content Calendar</h3>
+          <p class="section-desc">Daily content prompts for the full month — 4 themed weeks to keep you consistent.</p>
+          <div class="month-calendar" id="monthCalendar"></div>
+        </div>
+
+        <div class="output-section">
+          <h3 class="output-section-title">⚙️ Platform Algorithm Deep-Dive</h3>
+          <p class="section-desc">How the algorithm actually works for your platform — and exactly how to play with it.</p>
+          <div class="algo-cards" id="algoCards"></div>
+        </div>
+
+        <div class="output-section">
+          <h3 class="output-section-title">🎣 Viral Hook Formulas</h3>
+          <p class="section-desc">Proven opening-line templates tuned for your niche. Fill in the blanks and post.</p>
+          <div class="hooks-grid" id="hooksGrid"></div>
+        </div>
+
+        <div class="output-section">
+          <h3 class="output-section-title">💰 Monetization Roadmap by Follower Stage</h3>
+          <p class="section-desc">The right revenue move for where you actually are right now — not where you want to be.</p>
+          <div class="mono-stages" id="monoStages"></div>
+        </div>
+
+        <div class="output-section">
+          <h3 class="output-section-title">📊 Weekly Performance Tracker</h3>
+          <p class="section-desc">Log your key metrics each week to spot what's working. Saved in your browser.</p>
+          <div class="tracker-wrap" id="trackerWrap"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="saved-section" id="savedSection" style="display:none">
+  <div class="section-label">Saved Plans</div>
+  <h2 class="section-title">Your saved strategies</h2>
+  <div class="saved-grid" id="savedGrid"></div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="logo">
+      <span class="logo-mark">C</span>
+      <span class="logo-text">ContentOS</span>
+    </div>
+    <p class="footer-tagline">Remove the confusion. Build your system. Grow consistently.</p>
+    <p class="footer-copy">© 2025 ContentOS. Built for creators who are serious about showing up.</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── State ──────────────────────────────────────────────────────────────
+const sel = { niche:'', goal:'', platform:'', time:'' };
+let currentPlan = null;
+
+// ── Labels ─────────────────────────────────────────────────────────────
+const nicheLabels   = {students:'Students & Education',finance:'Finance & Investing',fitness:'Fitness & Health',tech:'Tech & Coding',business:'Business & Entrepreneurship',food:'Food & Cooking',lifestyle:'Lifestyle & Vlogs',fashion:'Fashion & Beauty',gaming:'Gaming',travel:'Travel',mindset:'Mindset & Self-Help',art:'Art & Design'};
+const goalLabels    = {growth:'Audience Growth',engagement:'Deep Engagement',monetization:'Monetization',authority:'Authority & Brand'};
+const platformLabels= {youtube:'YouTube',instagram:'Instagram',tiktok:'TikTok',twitter:'X / Twitter',linkedin:'LinkedIn',podcast:'Podcast',newsletter:'Newsletter',threads:'Threads'};
+const timeLabels    = {'1-3':'1–3 hrs/week','4-7':'4–7 hrs/week','8-14':'8–14 hrs/week','15+':'15+ hrs/week'};
+
+// ── Content Database ────────────────────────────────────────────────────
+const IDEAS = {
+  students:{
+    growth:[
+      {type:'viral',idea:'Study hack that saves 2 hours a day',emoji:'⚡'},
+      {type:'educational',idea:'How I scored 95%+ using the Feynman Technique',emoji:'📚'},
+      {type:'storytelling',idea:'My biggest exam failure and what it taught me',emoji:'😅'},
+      {type:'engagement',idea:'Poll: What\'s harder — time management or motivation?',emoji:'🗳️'},
+      {type:'educational',idea:'The exact note-taking system that changed my grades',emoji:'📝'},
+      {type:'viral',idea:'POV: You started studying 3 months earlier',emoji:'🚀'},
+      {type:'rest',idea:'Rest & Reflect',emoji:'🌿'}
+    ],
+    engagement:[
+      {type:'engagement',idea:'Ask Me Anything: Study routines and struggles',emoji:'🙋'},
+      {type:'storytelling',idea:'Why I almost gave up — and what changed everything',emoji:'💔'},
+      {type:'educational',idea:'My weekly study schedule (template inside)',emoji:'📅'},
+      {type:'engagement',idea:'Share your study playlist — I\'ll review it',emoji:'🎵'},
+      {type:'viral',idea:'Study with me: 4-hour Pomodoro session',emoji:'🍅'},
+      {type:'storytelling',idea:'Reading your DMs about exam anxiety — let\'s talk',emoji:'💬'},
+      {type:'rest',idea:'Rest Day',emoji:'🌿'}
+    ],
+    monetization:[
+      {type:'educational',idea:'Paid study resources that are actually worth it',emoji:'💰'},
+      {type:'promotional',idea:'My top 3 study tools (with honest reviews)',emoji:'🛒'},
+      {type:'storytelling',idea:'How I made ₹50K selling study notes online',emoji:'📈'},
+      {type:'educational',idea:'How to turn your notes into a digital product',emoji:'💡'},
+      {type:'viral',idea:'Unpacking a study subscription box — honest review',emoji:'📦'},
+      {type:'promotional',idea:'Student discount hacks most people miss',emoji:'🎁'},
+      {type:'rest',idea:'Rest Day',emoji:'🌿'}
+    ],
+    authority:[
+      {type:'educational',idea:'The science behind spaced repetition — full breakdown',emoji:'🧠'},
+      {type:'educational',idea:'Ranking every popular study method (data-backed)',emoji:'📊'},
+      {type:'storytelling',idea:'My 4-year journey: from average to top ranker',emoji:'🏆'},
+      {type:'educational',idea:'Interview with a topper — their exact system',emoji:'🎤'},
+      {type:'viral',idea:'The study advice that\'s actually hurting you',emoji:'⚠️'},
+      {type:'educational',idea:'My full study resource library — organized by subject',emoji:'📚'},
+      {type:'rest',idea:'Rest Day',emoji:'🌿'}
+    ]
+  },
+  finance:{
+    growth:[
+      {type:'viral',idea:'I invested ₹1000/month for 5 years — here\'s what happened',emoji:'📈'},
+      {type:'educational',idea:'Index funds explained in 3 minutes flat',emoji:'💡'},
+      {type:'storytelling',idea:'The financial mistake I made at 22',emoji:'💸'},
+      {type:'engagement',idea:'Poll: What\'s stopping you from investing?',emoji:'🗳️'},
+      {type:'educational',idea:'Emergency fund: How much, where to keep it',emoji:'🏦'},
+      {type:'viral',idea:'What ₹5000/month looks like in 20 years',emoji:'🚀'},
+      {type:'rest',idea:'Rest Day',emoji:'🌿'}
+    ],
+    engagement:[
+      {type:'engagement',idea:'Finance Q&A: Drop your money questions',emoji:'💬'},
+      {type:'storytelling',idea:'How I went from debt to savings in 18 months',emoji:'🔄'},
+      {type:'engagement',idea:'Rate my portfolio — reader submissions',emoji:'⭐'},
+      {type:'educational',idea:'30-day money challenge — join me',emoji:'🎯'},
+      {type:'viral',idea:'Reacting to terrible financial advice online',emoji:'😱'},
+      {type:'engagement',idea:'Your biggest money regret — let\'s talk',emoji:'🤔'},
+      {type:'rest',idea:'Rest Day',emoji:'🌿'}
+    ],
+    monetization:[
+      {type:'promotional',idea:'Best zero-fee investment apps (honest review)',emoji:'📱'},
+      {type:'educational',idea:'How I make passive income from my content',emoji:'💰'},
+      {type:'storytelling',idea:'Inside my multiple income streams',emoji:'🌊'},
+      {type:'promotional',idea:'My favorite budgeting tool — full walkthrough',emoji:'🛠️'},
+      {type:'educational',idea:'How to charge for financial consulting',emoji:'💼'},
+      {type:'viral',idea:'Turning a side hustle into ₹1L/month — real talk',emoji:'🚀'},
+      {type:'rest',idea:'Rest Day',emoji:'🌿'}
+    ],
+    authority:[
+      {type:'educational',idea:'Deep dive: How compound interest actually works',emoji:'🧮'},
+      {type:'educational',idea:'Reading a balance sheet for beginners',emoji:'📋'},
+      {type:'storytelling',idea:'Case study: How I analyzed my first stock',emoji:'🔍'},
+      {type:'educational',idea:'The 12 financial metrics every investor should know',emoji:'📊'},
+      {type:'viral',idea:'Debunking 5 finance myths that cost people money',emoji:'❌'},
+      {type:'educational',idea:'Tax-saving strategies most salaried people ignore',emoji:'💰'},
+      {type:'rest',idea:'Rest Day',emoji:'🌿'}
+    ]
+  },
+  fitness:{
+    growth:[
+      {type:'viral',idea:'30-day transformation challenge — join now',emoji:'💪'},
+      {type:'educational',idea:'The 3 exercises everyone does wrong',emoji:'⚠️'},
+      {type:'storytelling',idea:'My body transformation: 6 months of honest progress',emoji:'🔥'},
+      {type:'engagement',idea:'What\'s your biggest gym challenge? Comment below',emoji:'🗳️'},
+      {type:'educational',idea:'Beginner full-body workout — no equipment needed',emoji:'🏋️'},
+      {type:'viral',idea:'I did 100 push-ups a day for 30 days',emoji:'😤'},
+      {type:'rest',idea:'Rest Day',emoji:'🌿'}
+    ],
+    engagement:[
+      {type:'engagement',idea:'Weekly check-in: How\'s your training going?',emoji:'✅'},
+      {type:'storytelling',idea:'The injury that reset my fitness journey',emoji:'😰'},
+      {type:'educational',idea:'Live Q&A: Nutrition myths answered',emoji:'🎙️'},
+      {type:'engagement',idea:'Rate my meal prep — community feedback',emoji:'🥗'},
+      {type:'viral',idea:'Trying the "perfect morning routine" for 7 days',emoji:'🌅'},
+      {type:'engagement',idea:'DM me your workout — I\'ll review it',emoji:'💬'},
+      {type:'rest',idea:'Rest Day',emoji:'🌿'}
+    ],
+    monetization:[
+      {type:'promotional',idea:'My full supplement stack — what I actually use',emoji:'💊'},
+      {type:'educational',idea:'How to launch your own online fitness program',emoji:'💻'},
+      {type:'storytelling',idea:'How I made my first ₹1L from fitness content',emoji:'💰'},
+      {type:'promotional',idea:'Best home gym equipment under ₹5000',emoji:'🏠'},
+      {type:'educational',idea:'Setting up personal training as a side income',emoji:'🎯'},
+      {type:'viral',idea:'I spent ₹10,000 on gym gear — was it worth it?',emoji:'🛒'},
+      {type:'rest',idea:'Rest Day',emoji:'🌿'}
+    ],
+    authority:[
+      {type:'educational',idea:'Science of muscle hypertrophy — simplified',emoji:'🧬'},
+      {type:'educational',idea:'How to read a nutrition label properly',emoji:'🔬'},
+      {type:'educational',idea:'The truth about protein timing (with studies)',emoji:'⏰'},
+      {type:'storytelling',idea:'I spoke to 5 personal trainers — here\'s what they agree on',emoji:'🎓'},
+      {type:'viral',idea:'Debunking 7 fitness myths influencers push',emoji:'❌'},
+      {type:'educational',idea:'Progressive overload: The exact formula to use',emoji:'📊'},
+      {type:'rest',idea:'Rest Day',emoji:'🌿'}
+    ]
+  },
+  tech:{
+    growth:[
+      {type:'viral',idea:'I built this app in 24 hours — here\'s how',emoji:'⚡'},
+      {type:'educational',idea:'The roadmap to land your first dev job in 2025',emoji:'🗺️'},
+      {type:'storytelling',idea:'My first failed project — and what I learned',emoji:'💔'},
+      {type:'engagement',idea:'What language should beginners start with? (poll)',emoji:'🗳️'},
+      {type:'educational',idea:'Git for beginners: The only tutorial you need',emoji:'📦'},
+      {type:'viral',idea:'5 VS Code extensions that 10x my productivity',emoji:'🚀'},
+      {type:'rest',idea:'Rest Day',emoji:'🌿'}
+    ],
+    engagement:[
+      {type:'engagement',idea:'Show me your dev setup — I\'ll rate it',emoji:'💻'},
+      {type:'storytelling',idea:'My imposter syndrome story — and how I beat it',emoji:'😰'},
+      {type:'engagement',idea:'Tabs vs spaces — final answer?',emoji:'😂'},
+      {type:'educational',idea:'Live coding challenge — solve with me',emoji:'🎮'},
+      {type:'engagement',idea:'Ask a senior dev anything — Q&A thread',emoji:'🙋'},
+      {type:'viral',idea:'Reading your worst code and fixing it live',emoji:'😬'},
+      {type:'rest',idea:'Rest Day',emoji:'🌿'}
+    ],
+    monetization:[
+      {type:'educational',idea:'How I price my freelance projects (full breakdown)',emoji:'💰'},
+      {type:'promotional',idea:'Best platforms to sell your code/templates',emoji:'🛒'},
+      {type:'storytelling',idea:'From ₹0 to ₹2L/month freelancing as a dev',emoji:'📈'},
+      {type:'educational',idea:'Building and selling a SaaS in 30 days',emoji:'🚀'},
+      {type:'promotional',idea:'Courses that actually helped me level up',emoji:'🎓'},
+      {type:'viral',idea:'I applied to 50 remote jobs — here\'s the truth',emoji:'😤'},
+      {type:'rest',idea:'Rest Day',emoji:'🌿'}
+    ],
+    authority:[
+      {type:'educational',idea:'System design basics every developer needs to know',emoji:'🏗️'},
+      {type:'educational',idea:'Big O notation explained with real examples',emoji:'📊'},
+      {type:'educational',idea:'When NOT to use microservices',emoji:'⚠️'},
+      {type:'storytelling',idea:'Code review of a popular open-source project',emoji:'🔍'},
+      {type:'educational',idea:'The architecture behind apps with 1M+ users',emoji:'🏛️'},
+      {type:'viral',idea:'Interviewing for FAANG — what they actually test',emoji:'🎯'},
+      {type:'rest',idea:'Rest Day',emoji:'🌿'}
+    ]
+  },
+  business:{
+    growth:[
+      {type:'viral',idea:'How I grew from 0 to 10K followers in 90 days',emoji:'📈'},
+      {type:'educational',idea:'The one business model beginners should start with',emoji:'💡'},
+      {type:'storytelling',idea:'My business failure that cost ₹3 lakhs',emoji:'💸'},
+      {type:'engagement',idea:'What\'s stopping you from starting? Be honest',emoji:'🗳️'},
+      {type:'educational',idea:'How to validate a business idea in a weekend',emoji:'✅'},
+      {type:'viral',idea:'Starting a business with ₹5000 — is it possible?',emoji:'🚀'},
+      {type:'rest',idea:'Rest Day',emoji:'🌿'}
+    ],
+    engagement:[
+      {type:'engagement',idea:'Drop your business idea — I\'ll give real feedback',emoji:'💬'},
+      {type:'storytelling',idea:'The mentor advice that changed my business life',emoji:'🎓'},
+      {type:'engagement',idea:'Rate my pitch deck — live review',emoji:'⭐'},
+      {type:'educational',idea:'Book club: What I learned from Zero to One',emoji:'📚'},
+      {type:'engagement',idea:'Your worst business decision — share anonymously',emoji:'😬'},
+      {type:'viral',idea:'Replying to "just get a job" comments',emoji:'😤'},
+      {type:'rest',idea:'Rest Day',emoji:'🌿'}
+    ],
+    monetization:[
+      {type:'educational',idea:'Productizing your expertise into a ₹10K offer',emoji:'💡'},
+      {type:'promotional',idea:'Tools running my entire business under ₹2000/mo',emoji:'🛠️'},
+      {type:'storytelling',idea:'My first ₹1L month as a creator — full breakdown',emoji:'🏆'},
+      {type:'educational',idea:'How to pitch and land brand sponsorships',emoji:'🤝'},
+      {type:'viral',idea:'I launched a digital product in 48 hours — results',emoji:'⚡'},
+      {type:'promotional',idea:'My top book recommendations',emoji:'📚'},
+      {type:'rest',idea:'Rest Day',emoji:'🌿'}
+    ],
+    authority:[
+      {type:'educational',idea:'Understanding unit economics for non-MBAs',emoji:'📊'},
+      {type:'educational',idea:'What VCs actually look for in a startup pitch',emoji:'🎯'},
+      {type:'storytelling',idea:'Breaking down a successful brand\'s strategy',emoji:'🔍'},
+      {type:'educational',idea:'How to build an unfair competitive advantage',emoji:'🏆'},
+      {type:'viral',idea:'Business lessons from a ₹100Cr company collapse',emoji:'⚠️'},
+      {type:'educational',idea:'The 5 metrics every business owner must track',emoji:'📈'},
+      {type:'rest',idea:'Rest Day',emoji:'🌿'}
+    ]
+  }
+};
+
+const SCHEDULES = {
+  youtube:[{day:'Tuesday',time:'5:00 PM – 8:00 PM'},{day:'Friday',time:'3:00 PM – 6:00 PM'},{day:'Sunday',time:'10:00 AM – 1:00 PM'}],
+  instagram:[{day:'Monday',time:'7:00 PM – 9:00 PM'},{day:'Wednesday',time:'11:00 AM – 1:00 PM'},{day:'Friday',time:'8:00 PM – 10:00 PM'},{day:'Saturday',time:'9:00 AM – 11:00 AM'}],
+  tiktok:[{day:'Tuesday',time:'7:00 PM – 9:00 PM'},{day:'Thursday',time:'6:00 PM – 9:00 PM'},{day:'Saturday',time:'12:00 PM – 3:00 PM'},{day:'Sunday',time:'8:00 PM – 10:00 PM'}],
+  twitter:[{day:'Monday',time:'8:00 AM – 10:00 AM'},{day:'Wednesday',time:'12:00 PM – 2:00 PM'},{day:'Friday',time:'9:00 AM – 11:00 AM'}],
+  linkedin:[{day:'Tuesday',time:'7:00 AM – 9:00 AM'},{day:'Thursday',time:'12:00 PM – 2:00 PM'}],
+  podcast:[{day:'Wednesday',time:'Weekly release'},{day:'Sunday',time:'Alternate week'}],
+  newsletter:[{day:'Tuesday',time:'7:00 AM send'},{day:'Thursday',time:'7:00 AM (2x/week)'}],
+  threads:[{day:'Monday',time:'9:00 AM – 11:00 AM'},{day:'Thursday',time:'8:00 PM – 10:00 PM'},{day:'Saturday',time:'11:00 AM – 1:00 PM'}]
+};
+
+const TIPS = {
+  growth:{
+    youtube:[
+      {title:'Hook in the first 3 seconds',desc:'Your retention rate determines reach. Open with a shocking stat, bold claim, or visual pattern interrupt — no intro, no fluff.'},
+      {title:'Title + thumbnail = 80% of the click',desc:'Spend 20% of your creation time on the thumbnail. Test 2 versions using YouTube\'s built-in A/B tool once eligible.'},
+      {title:'Post consistency beats post quantity',desc:'One video per week, every week, beats 3 videos one month then nothing. YouTube rewards reliability in the algorithm.'},
+      {title:'Strategic playlist architecture',desc:'Group your videos into playlists around viewer intent. Playlists compound watch time and signal topical authority.'}
+    ],
+    instagram:[
+      {title:'Reels carry organic reach right now',desc:'In 2025, Reels get 3–5x more reach than static posts for most niches. Prioritize short-form video if growth is the goal.'},
+      {title:'First comment = algorithm signal',desc:'Post a value-packed comment immediately after posting to boost early engagement velocity and signal the algorithm.'},
+      {title:'Collab posts double your audience exposure',desc:'Use Instagram\'s Collab feature with creators in adjacent niches. You get their audience, they get yours — zero cost.'},
+      {title:'Post on Stories daily, even if lazy',desc:'Stories keep you in the loop. A poll, a re-share, or a simple update daily signals active account status to the algorithm.'}
+    ],
+    tiktok:[
+      {title:'The first 0.5 seconds decide everything',desc:'TikTok\'s algorithm shows videos based on completion rate. A jarring visual or bold text in frame 1 is your best weapon.'},
+      {title:'Post 3–5x per week minimum for growth phase',desc:'TikTok rewards volume. Find your format, batch-create, and post consistently while analyzing which hooks work.'},
+      {title:'Trending sounds ≠ lazy content',desc:'Pair trending audio with your niche-specific content. The sound borrows reach; your value makes people follow.'},
+      {title:'Your 2nd and 3rd videos matter most',desc:'After a viral video, new followers judge you on the next 2 posts. Have fresh, high-quality content scheduled immediately after.'}
+    ],
+    twitter:[
+      {title:'Thread format drives maximum reach',desc:'Long-form threads outperform single tweets 3:1. Structure: strong hook tweet → value delivery → CTA finale.'},
+      {title:'Engage before you post, not after',desc:'Spend 10 minutes commenting on top accounts in your niche before you post. Warms the algorithm and puts your name in front of their audience.'},
+      {title:'Repost at different times with variation',desc:'Your best tweets can be reshared 3–6 months later with a slightly different angle. New followers never saw the original.'},
+      {title:'Quote-tweet strategically',desc:'Quote-tweet popular posts in your niche with a contrarian take or additional value. Their engagement becomes your exposure.'}
+    ],
+    linkedin:[
+      {title:'The LinkedIn hook formula',desc:'Line 1 = bold claim. Line 2 = emotional amplifier. Line 3 = "Here\'s what I learned:" — this drives the "see more" click.'},
+      {title:'Post on Tuesday–Thursday for peak reach',desc:'LinkedIn is a professional platform — your audience is online mid-week, mid-day. Avoid weekends and late evenings.'},
+      {title:'Document, don\'t brand-build yet',desc:'Share real work stories, client wins, lessons from failures. Authentic professional stories beat polished brand content 5:1.'},
+      {title:'Comment on 10 posts per day',desc:'Thoughtful comments on posts by influencers in your niche drive profile clicks. It\'s free traffic with compounding returns.'}
+    ],
+    podcast:[
+      {title:'Nail the first 90 seconds',desc:'Most podcast drop-off happens in the first 90 seconds. No long intros, no ads upfront. Start with the most compelling thing the listener will learn.'},
+      {title:'Clip every episode into short-form content',desc:'One podcast episode = 3–5 short clips for Reels, Shorts, or TikTok. This multiplies your reach without extra recording effort.'},
+      {title:'Guest cross-promotion is underrated',desc:'When you feature guests, they share to their audience. Even micro-guests (5K–20K followers) drive meaningful new listeners.'},
+      {title:'Submit to all directories day one',desc:'Spotify, Apple, Google, Amazon, Pocket Casts — get on all of them on launch day. Listener discovery comes from multiple sources.'}
+    ],
+    newsletter:[
+      {title:'Subject line is everything',desc:'Your open rate is determined by the subject line. Test curiosity gaps, numbers, and personal address consistently.'},
+      {title:'One topic, one email',desc:'Newsletters that stay focused on a single idea have 40% higher click rates than multi-section newsletters trying to cover everything.'},
+      {title:'Referral program from day 1',desc:'Add a simple "Share this with one friend" CTA to every email. Even 1% forwarding rate compounds significantly over time.'},
+      {title:'Repurpose top emails into social posts',desc:'Your best newsletters are likely your best social content too. Strip the email format and post threads or carousels.'}
+    ],
+    threads:[
+      {title:'Threads favors conversational content',desc:'Unlike Instagram, Threads rewards casual, opinion-led, conversational posts over polished brand content. Be human, not branded.'},
+      {title:'Reply to every comment in hour 1',desc:'Threads\' algorithm heavily weights comment engagement in the first hour. Responding fast keeps the post in feeds longer.'},
+      {title:'Post 3–5x per day for aggressive growth',desc:'Threads is a high-volume platform. Unlike Instagram, more posts ≠ less reach. Find your voice and post multiple times daily.'},
+      {title:'Ask genuine questions, not engagement bait',desc:'Open-ended questions that spark genuine debate outperform generic "agree or disagree?" posts every time.'}
+    ]
+  },
+  engagement:{
+    youtube:[
+      {title:'End screen CTA wins comments',desc:'Instead of "Like and subscribe," ask a specific question in your last 30 seconds: "What would you do in this situation? Drop it below."'},
+      {title:'Heart every comment in the first 24 hours',desc:'YouTube notifies commenters when the creator hearts their comment. This brings people back and increases overall comment volume.'},
+      {title:'Community posts for non-video days',desc:'Use the Community tab to post polls, behind-the-scenes shots, and questions on days you don\'t upload.'},
+      {title:'Pin a discussion-starting comment yourself',desc:'Pin a thought-provoking question as the top comment immediately after posting. It frames the conversation and drives replies.'}
+    ],
+    instagram:[
+      {title:'Stories with polls every single day',desc:'Stories with interactive elements get 2x more visibility in the algorithm than passive Stories. Use them daily.'},
+      {title:'Respond to DMs as a community habit',desc:'When a follower DMs and you reply, Instagram flags that as a "close connection" — boosting your posts in their feed.'},
+      {title:'Caption hooks that demand a response',desc:'End captions with a direct, specific question: "Comment your answer: A, B, or C — and why."'},
+      {title:'Save count matters more than likes',desc:'Saves signal to the algorithm that content is valuable and evergreen. Create content people want to come back to.'}
+    ],
+    tiktok:[
+      {title:'Read comments on the next video',desc:'Responding to a top comment from your last video by making a response video creates a content loop that drives loyal retention.'},
+      {title:'Duet with your audience',desc:'Ask followers to Duet or Stitch your content with their reaction or answer. This creates community content with zero extra effort.'},
+      {title:'Live sessions build the deepest loyalty',desc:'Going live 2–3x per week for even 20 minutes creates bonds that videos alone can\'t. Real-time interaction converts viewers to fans.'},
+      {title:'Leave a curiosity gap at the end',desc:'"See part 2 tomorrow" and "Comment X if you want the full breakdown" are engagement formulas that drive saves and return visits.'}
+    ],
+    twitter:[
+      {title:'Reply-first engagement strategy',desc:'Before posting anything, spend 15 minutes in deep, thoughtful replies to accounts you admire. This drives profile visits.'},
+      {title:'Turn DMs into public value',desc:'With permission, share interesting DM conversations as threads. Real conversations are more compelling than opinions.'},
+      {title:'Weekly ask-me-anything format',desc:'Post a standing "AMA: Drop your question below" every week at the same time. Consistency builds a ritual around your content.'},
+      {title:'Vulnerability posts drive outsized shares',desc:'Sharing a real failure, fear, or mistake performs 3–5x better in engagement than advice posts. People follow humans, not personas.'}
+    ],
+    linkedin:[
+      {title:'Respond to every comment within 2 hours',desc:'LinkedIn\'s algorithm gives bonus reach to posts with active comment threads. Keeping conversations alive in the first 2 hours is critical.'},
+      {title:'Mention specific people in your posts',desc:'When relevant, mention colleagues or connections by name in your posts. They\'re notified, and often comment — expanding reach.'},
+      {title:'The personal story format always wins',desc:'"I was told I\'d never make it. Here\'s what happened next:" consistently outperforms advice posts. Start every week with one personal story.'},
+      {title:'Poll + follow-up post system',desc:'Post a poll, let it gather responses, then follow up with a post analyzing the results. Creates a 2-post engagement loop from one idea.'}
+    ],
+    podcast:[
+      {title:'Read listener messages on air',desc:'Dedicate 5 minutes per episode to reading a listener review or message. People love hearing their name — and others love that you value your listeners.'},
+      {title:'Monthly Q&A episodes build belonging',desc:'Run a monthly episode purely from listener questions. It signals community and makes your show feel interactive.'},
+      {title:'Create a private listener community',desc:'A Discord, Telegram, or WhatsApp group for loyal listeners costs nothing but pays massive dividends in engagement and word-of-mouth.'},
+      {title:'End every episode with a listener challenge',desc:'"This week, try X and DM me your result" ties your episode to action. People who act on your advice become your most loyal listeners.'}
+    ],
+    newsletter:[
+      {title:'Write like it\'s a letter to one person',desc:'Use "you" constantly. Refer to previous newsletters. Mention what readers told you in replies. The more personal it feels, the higher the engagement.'},
+      {title:'Reply-worthy content over broadcast content',desc:'End every email with a simple question and your personal email. Readers who reply become your most loyal subscribers.'},
+      {title:'Exclusive content for subscribers only',desc:'Tease your newsletter on social as a place for things you "can\'t share publicly." Exclusivity drives subscriptions and opens.'},
+      {title:'Segment and personalize over time',desc:'Tag subscribers by what they click on. Relevant emails get 3x higher engagement than generic blasts.'}
+    ],
+    threads:[
+      {title:'Open loops drive return visits',desc:'"I\'ll share the full story tomorrow" creates anticipation and return visits. Use open loops strategically — but always deliver.'},
+      {title:'Hot takes with genuine nuance',desc:'Controversial takes that acknowledge the counterargument generate 5x more thoughtful replies than pure hot takes.'},
+      {title:'Daily "what are you working on?" posts',desc:'Simple check-in posts at the same time each day build a ritual. Your regulars will show up just to tell you what they\'re doing.'},
+      {title:'Start conversations, don\'t just post',desc:'Comment on 20 threads per day in your niche. Add value, disagree thoughtfully, amplify others. Threads rewards active participants.'}
+    ]
+  },
+  monetization:{
+    youtube:[
+      {title:'Mention your offer in every video',desc:'A natural 20-second mention mid-video ("If you want my full system, the link is in the description") converts well without feeling salesy.'},
+      {title:'Create "bridge" content that leads to offers',desc:'Videos that end with "The next step is X" and link to a paid product have 3x higher click-through than general description links.'},
+      {title:'Sponsor-ready content from day one',desc:'Brand deals start at 5K–10K subscribers for niche channels. Create a media kit early and start outreaching to relevant brands at 2K subscribers.'},
+      {title:'Memberships > one-time revenue',desc:'YouTube Memberships or Patreon recurring revenue compounds month-over-month. Offer exclusive perks to justify pricing.'}
+    ],
+    instagram:[
+      {title:'Link in bio is your storefront',desc:'Use Linktree or a custom landing page. List your top offer, lead magnet, and YouTube/newsletter at minimum. Update it monthly.'},
+      {title:'Story link stickers are your best converters',desc:'Use Stories exclusively to drive traffic to offers — not static posts. The link sticker converts 3x better than a "link in bio" mention.'},
+      {title:'Paid partnership disclosure = credibility',desc:'Counter-intuitively, disclosed sponsored posts often convert better than undisclosed ones. Transparency builds trust which drives purchases.'},
+      {title:'Digital products for Instagram audiences',desc:'Presets, templates, guides, and mini-courses under ₹1000 sell well to Instagram audiences. Low price = low barrier = high volume.'}
+    ],
+    tiktok:[
+      {title:'TikTok Shop integration for product creators',desc:'If you sell physical products, TikTok Shop\'s integrated checkout eliminates friction entirely. Product videos with Shop links convert at 5–8%.'},
+      {title:'Build an email list from TikTok traffic',desc:'TikTok can be deleted tomorrow. Every video CTA should drive people somewhere you own — your email list or website.'},
+      {title:'Creator marketplace for brand deals',desc:'Apply to TikTok\'s Creator Marketplace at 10K followers. Brands search here for micro-influencers in specific niches.'},
+      {title:'Bundle free + paid consistently',desc:'Give away 90% of your best knowledge for free on TikTok. The 10% you sell should be the implementation layer: templates, coaching, courses.'}
+    ],
+    twitter:[
+      {title:'The free value → paid offer funnel',desc:'Post threads with 80% of the value → last tweet: "Want the full framework? It\'s in my course/newsletter." This is the highest-converting format on X.'},
+      {title:'Consulting calls from DM conversations',desc:'When followers ask detailed questions in DMs, offer a 30-minute call for ₹3000–₹7000. Many will say yes. This is often first income for creators.'},
+      {title:'Paid communities are underpriced on X',desc:'Superfollow subscriptions or Substack communities at ₹299–₹999/month add up quickly with a modest loyal following.'},
+      {title:'Ghost-writing is a fast monetization path',desc:'Use your X writing skills to ghost-write for other professionals at ₹10,000–₹50,000/month per client.'}
+    ],
+    linkedin:[
+      {title:'LinkedIn is a B2B goldmine',desc:'If your content attracts professionals or decision-makers, LinkedIn leads convert at 5–10x the rate of other platforms. Price accordingly.'},
+      {title:'Inbound consulting from content alone',desc:'Post detailed, expert content for 3–6 months consistently. Inbound consulting inquiries will start arriving in DMs without any direct pitching.'},
+      {title:'Webinar → paid offer funnel',desc:'Host a free 60-minute webinar monthly on your core topic. At the end, pitch a low-ticket offer (₹2000–₹5000). LinkedIn audiences convert well.'},
+      {title:'Your profile is a sales page',desc:'Optimize your headline, about section, and featured section to speak to your ideal client. 40% of people who engage with your posts will visit your profile.'}
+    ],
+    podcast:[
+      {title:'Mid-roll ads convert better than pre-roll',desc:'Ad reads at 15–20 minutes into an episode — when listeners are engaged — convert at 2–3x the rate of pre-roll ads.'},
+      {title:'Podcast-exclusive discount codes drive attribution',desc:'Give sponsors a unique code so brands can track ROI. This makes you more valuable and justifies rate increases.'},
+      {title:'Premium RSS feed for your super-fans',desc:'Platforms like Supercast or Patreon let you offer ad-free, bonus-episode access for ₹200–₹500/month per listener.'},
+      {title:'The back-catalog is your best asset',desc:'A podcast with 100+ episodes generates evergreen discovery. The 50th episode gets downloaded alongside the 150th.'}
+    ],
+    newsletter:[
+      {title:'Sponsorships start at 500 subscribers',desc:'With a highly-niche, engaged list of 500+ readers, you can charge ₹3000–₹10,000 per sponsored mention. Pitch directly.'},
+      {title:'Paid tier from day 1',desc:'Even with 200 subscribers, launch a paid tier at ₹299/month. Even 10 paid subscribers is proof of concept.'},
+      {title:'Your list = your product launch engine',desc:'When you launch anything — a course, a tool, a service — your email list converts at 5–20x higher than social media traffic.'},
+      {title:'Affiliate links in context, not in banners',desc:'Affiliate links embedded naturally in the newsletter body convert 8x better than sidebar banners.'}
+    ],
+    threads:[
+      {title:'Threads → email list → monetization pipeline',desc:'Threads has no native monetization yet. Your only path is using Threads to drive traffic to your email list or website.'},
+      {title:'Position as the expert, then pitch lightly',desc:'Post 90% value for 3 months, then casually mention a paid offer once per week. This "earned the right to sell" approach converts without feeling pushy.'},
+      {title:'Cross-post your best threads to LinkedIn',desc:'The same content that performs on Threads often works on LinkedIn — where monetization is significantly easier.'},
+      {title:'Collaboration deals over brand deals initially',desc:'Threads creators can co-create paid products (guides, workshops) with other creators for faster monetization.'}
+    ]
+  },
+  authority:{
+    youtube:[
+      {title:'Long-form content = authority signal',desc:'Videos over 20 minutes that deeply cover a topic rank better on YouTube search and signal expertise. Don\'t artificially cut depth for length.'},
+      {title:'Cite sources, show your research',desc:'On-screen sources, books, and data make you more credible than opinion alone. Even a quick "according to X study" elevates perceived authority.'},
+      {title:'Feature collaborators early',desc:'Doing interviews with bigger names early — even if your numbers are small — associates your brand with authority figures in the viewer\'s mind.'},
+      {title:'Your video titles should promise transformation',desc:'Authority content titles: "The complete guide to X", "Why X is wrong (and what actually works)", "What I learned after 10 years of X."'}
+    ],
+    instagram:[
+      {title:'Carousel = authority content format',desc:'Carousels are Instagram\'s best format for education. They get saved, shared, and come back to — which builds long-term authority.'},
+      {title:'Consistent visual identity = credibility shortcut',desc:'A consistent font, color palette, and layout makes your content look like it\'s from a professional brand, not a casual creator.'},
+      {title:'Show your credentials naturally',desc:'Don\'t list your bio like a resume. Mention credentials in context: "In my 7 years as a CA, I\'ve seen…" feels more authentic.'},
+      {title:'Become the curator of your niche',desc:'Regularly repost and comment on important research, news, and developments in your field. Being the "trusted filter" builds deep authority.'}
+    ],
+    tiktok:[
+      {title:'Data-led content outperforms opinion content',desc:'TikTok audiences are skeptical of "influencer advice." Back every claim with a stat, a study, or a real-world example.'},
+      {title:'Debunking content drives authority fastest',desc:'"Actually, X is wrong — here\'s why" content performs 3x better for authority building than straightforward advice content.'},
+      {title:'Create a recognizable content series',desc:'A named, repeating series ("Monday Myth Busters," "Deep Dive Fridays") signals consistency and depth. Viewers know what to expect.'},
+      {title:'Address the skeptic in your content',desc:'Open your videos by acknowledging the most common objection to your point. This signals intellectual honesty and builds trust faster.'}
+    ],
+    twitter:[
+      {title:'The "1000 days of posting" commitment',desc:'Authority on X compounds slowly. Commit to consistent posting for 2–3 years. The accounts people see as authorities today posted into the void for years.'},
+      {title:'Create original frameworks and name them',desc:'Give names to your mental models: "The Creator Flywheel," "The 3-Step X Method." Named frameworks are memorable and establish IP.'},
+      {title:'Counter-intuitive threads win attention',desc:'"Unpopular opinion: X is actually bad for creators" outperforms consensus content. Your job is to offer a perspective that makes people think.'},
+      {title:'Curate and synthesize, don\'t just opine',desc:'Share summaries of books, papers, and research with your perspective added. Curation at scale = authority signal.'}
+    ],
+    linkedin:[
+      {title:'The "Years of experience in one post" format',desc:'"After 10 years in X, here are the 5 things I wish I knew" is the highest-performing authority format on LinkedIn.'},
+      {title:'Write case studies, not just advice',desc:'Real case studies — even anonymized — demonstrate that your knowledge has been tested in the real world. Theory + proof = authority.'},
+      {title:'Get featured in publications',desc:'Guest posts on industry blogs, interviews in newsletters, and podcast appearances all show up on LinkedIn and accelerate authority perception.'},
+      {title:'Consistent newsletter on LinkedIn',desc:'LinkedIn\'s newsletter feature notifies all your followers. A monthly deep-dive newsletter positions you as a thought leader even at low follower counts.'}
+    ],
+    podcast:[
+      {title:'Interview the authorities in your niche',desc:'Getting access to credible experts signals to your audience that you\'re at their level. Start with people 2 levels above you, not the top 1%.'},
+      {title:'Create a "definitive guide" episode series',desc:'A multi-part series called "The Complete Guide to X" becomes a reference resource people share and recommend to others.'},
+      {title:'Transcripts and show notes signal seriousness',desc:'Detailed show notes with timestamps, links, and key quotes show listeners you value their time and take your content seriously.'},
+      {title:'Position as a curator of the best thinking',desc:'"The best books on X, ranked and reviewed" or "5 episodes that changed how I think about X" shows taste and breadth.'}
+    ],
+    newsletter:[
+      {title:'Go deeper than anyone else in your niche',desc:'Your authority isn\'t built by being first — it\'s built by being most thorough. A 3000-word newsletter that leaves nothing out becomes a reference document.'},
+      {title:'Archive your best work prominently',desc:'Create a "Best of" section in your newsletter footer. New subscribers reading your archives builds authority retroactively.'},
+      {title:'Feature your thinking process, not just conclusions',desc:'"Here\'s how I think about X" reveals intellectual depth that polished conclusions can\'t. Showing your reasoning is the authority move.'},
+      {title:'Collaborations with established newsletters',desc:'Guest posting in larger newsletters in your niche exposes you to an audience pre-qualified to care about your expertise.'}
+    ],
+    threads:[
+      {title:'Long-form threads establish depth',desc:'While most Threads posts are short, a well-structured 15-post thread on a complex topic signals depth and separates you from casual posters.'},
+      {title:'Share your real-time learning',desc:'"I\'m currently studying X — here\'s what I\'m discovering" is an underused authority format. Real-time intellectual curiosity is compelling.'},
+      {title:'Curate the best of your niche daily',desc:'Sharing and commenting on the best research, articles, and thinking in your niche daily positions you as the filter everyone should follow.'},
+      {title:'Build cross-platform authority',desc:'Threads works best as an authority amplifier alongside YouTube, LinkedIn, or a newsletter. Use it to share your work from other platforms.'}
+    ]
+  }
+};
+
+const CONTENT_MIX = {
+  growth:[
+    {icon:'🔥',type:'Viral / Trend',pct:'40%',desc:'Hook-first content designed to be shared and discovered'},
+    {icon:'📚',type:'Educational',pct:'40%',desc:'Deep value content that builds trust and return visits'},
+    {icon:'💬',type:'Engagement',pct:'20%',desc:'Polls, questions, and conversation starters'}
+  ],
+  engagement:[
+    {icon:'💬',type:'Engagement',pct:'40%',desc:'Interactive content that invites real responses'},
+    {icon:'📖',type:'Storytelling',pct:'35%',desc:'Personal stories that build emotional connection'},
+    {icon:'📚',type:'Educational',pct:'25%',desc:'Value content your community loves to share'}
+  ],
+  monetization:[
+    {icon:'📚',type:'Educational',pct:'50%',desc:'Value-first content that earns trust before selling'},
+    {icon:'🛒',type:'Promotional',pct:'30%',desc:'Soft sell, product features, reviews, affiliate content'},
+    {icon:'📖',type:'Storytelling',pct:'20%',desc:'Income and transformation stories that inspire action'}
+  ],
+  authority:[
+    {icon:'📚',type:'Educational',pct:'60%',desc:'Deep, research-backed content that proves expertise'},
+    {icon:'📖',type:'Storytelling',pct:'25%',desc:'Case studies and experience-based narratives'},
+    {icon:'🔥',type:'Viral / Opinion',pct:'15%',desc:'Contrarian takes and debunking popular myths'}
+  ]
+};
+
+const POSTING_DAYS = {
+  '1-3':['tuesday','friday'],
+  '4-7':['monday','wednesday','friday'],
+  '8-14':['monday','tuesday','thursday','friday','saturday'],
+  '15+':['monday','tuesday','wednesday','thursday','friday','saturday']
+};
+
+// ── Chip Selection ─────────────────────────────────────────────────────
+function initChips() {
+  // Niche chips
+  document.querySelectorAll('#nicheChips .chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('#nicheChips .chip').forEach(c => c.classList.remove('selected'));
+      chip.classList.add('selected');
+      sel.niche = chip.dataset.value;
+      document.getElementById('customNiche').value = '';
+    });
+  });
+
+  document.getElementById('customNiche').addEventListener('input', e => {
+    if (e.target.value.trim()) {
+      document.querySelectorAll('#nicheChips .chip').forEach(c => c.classList.remove('selected'));
+      sel.niche = e.target.value.trim();
+    } else {
+      const selected = document.querySelector('#nicheChips .chip.selected');
+      sel.niche = selected ? selected.dataset.value : '';
+    }
+  });
+
+  // Goal cards
+  document.querySelectorAll('#goalCards .goal-card').forEach(card => {
+    card.addEventListener('click', () => {
+      document.querySelectorAll('#goalCards .goal-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      sel.goal = card.dataset.value;
+    });
+  });
+
+  // Platform chips
+  document.querySelectorAll('#platformChips .platform-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('#platformChips .platform-chip').forEach(c => c.classList.remove('selected'));
+      chip.classList.add('selected');
+      sel.platform = chip.dataset.value;
+    });
+  });
+
+  // Time chips
+  document.querySelectorAll('#timeChips .time-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('#timeChips .time-chip').forEach(c => c.classList.remove('selected'));
+      chip.classList.add('selected');
+      sel.time = chip.dataset.value;
+    });
+  });
+}
+
+// ── Step Navigation ────────────────────────────────────────────────────
+function showStep(n) {
+  document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step' + n).classList.add('active');
+  const pct = (n / 4) * 100;
+  document.getElementById('progressBar').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent = 'Step ' + n + ' of 4';
+}
+
+function validate(step) {
+  const map = {1:{key:'niche',err:'nicheError'},2:{key:'goal',err:'goalError'},3:{key:'platform',err:'platformError'},4:{key:'time',err:'timeError'}};
+  const {key, err} = map[step];
+  if (step === 1 && !sel.niche) {
+    const v = document.getElementById('customNiche').value.trim();
+    if (v) sel.niche = v;
+  }
+  if (!sel[key]) {
+    document.getElementById(err).classList.remove('hidden');
+    return false;
+  }
+  document.getElementById(err).classList.add('hidden');
+  return true;
+}
+
+// ── Wire up all buttons ────────────────────────────────────────────────
+function initButtons() {
+  document.getElementById('next1').addEventListener('click', () => { if (validate(1)) showStep(2); });
+  document.getElementById('next2').addEventListener('click', () => { if (validate(2)) showStep(3); });
+  document.getElementById('next3').addEventListener('click', () => { if (validate(3)) showStep(4); });
+  document.getElementById('back2').addEventListener('click', () => showStep(1));
+  document.getElementById('back3').addEventListener('click', () => showStep(2));
+  document.getElementById('back4').addEventListener('click', () => showStep(3));
+  document.getElementById('generateBtn').addEventListener('click', generatePlan);
+  document.getElementById('copyBtn').addEventListener('click', copyPlan);
+  document.getElementById('regenBtn').addEventListener('click', regenPlan);
+  document.getElementById('saveBtn').addEventListener('click', savePlan);
+}
+
+// ── Generate ───────────────────────────────────────────────────────────
+function generatePlan() {
+  if (!validate(4)) return;
+  const btn = document.getElementById('generateBtn');
+  btn.disabled = true;
+  document.getElementById('generateBtnText').textContent = 'Building your plan…';
+  document.getElementById('generateSpinner').classList.remove('hidden');
+
+  setTimeout(() => {
+    const plan = buildPlan();
+    currentPlan = plan;
+    renderPlan(plan);
+    btn.disabled = false;
+    document.getElementById('generateBtnText').textContent = '✦ Generate My Plan';
+    document.getElementById('generateSpinner').classList.add('hidden');
+    document.getElementById('outputPanel').scrollIntoView({behavior:'smooth',block:'start'});
+  }, 1400);
+}
+
+function buildPlan() {
+  const {niche, goal, platform, time} = sel;
+  const nicheKey = (IDEAS[niche] && IDEAS[niche][goal]) ? niche : null;
+  const ideas = nicheKey ? IDEAS[nicheKey][goal] : genFallbackIdeas(niche, goal);
+  const optimalTimes = SCHEDULES[platform] || SCHEDULES.instagram;
+  const tips = (TIPS[goal] && TIPS[goal][platform]) ? TIPS[goal][platform] : (TIPS[goal] ? TIPS[goal].instagram : TIPS.growth.instagram);
+  const mix = CONTENT_MIX[goal] || CONTENT_MIX.growth;
+  const postingDays = POSTING_DAYS[time] || POSTING_DAYS['4-7'];
+  return {niche, goal, platform, time, ideas, optimalTimes, tips, mix, postingDays, generatedAt: new Date().toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'})};
+}
+
+function genFallbackIdeas(niche, goal) {
+  return [
+    {type:'educational',idea:`Complete beginner's guide to ${niche}`,emoji:'📚'},
+    {type:'viral',idea:`Top mistakes people make in ${niche} (and how to avoid them)`,emoji:'⚠️'},
+    {type:'storytelling',idea:`My 6-month journey in ${niche} — honest review`,emoji:'📖'},
+    {type:'engagement',idea:`What's your biggest ${niche} challenge? Drop it below`,emoji:'💬'},
+    {type:'educational',idea:`Step-by-step ${niche} system for beginners`,emoji:'🗺️'},
+    {type:'viral',idea:`I tried every popular ${niche} method — here's the truth`,emoji:'🔍'},
+    {type:'rest',idea:'Rest & Reflect Day',emoji:'🌿'}
+  ];
+}
+
+// ── Render ─────────────────────────────────────────────────────────────
+function renderPlan(plan) {
+  const {niche, goal, platform, time, ideas, optimalTimes, tips, mix, postingDays, generatedAt} = plan;
+  document.getElementById('outputPlaceholder').classList.add('hidden');
+  document.getElementById('outputContent').classList.remove('hidden');
+  document.getElementById('outputBadge').textContent = (platformLabels[platform]||platform) + ' Strategy';
+  document.getElementById('outputTitle').textContent = (nicheLabels[niche]||niche) + ' — ' + (goalLabels[goal]||goal);
+  document.getElementById('outputMeta').textContent = (timeLabels[time]||time) + ' · Generated ' + generatedAt;
+  renderCalendar(ideas, postingDays);
+  renderMix(mix);
+  renderTips(tips);
+  renderSchedule(optimalTimes);
+  render30DayCalendar(ideas, postingDays, goal);
+  renderAlgoDive(platform);
+  renderHooks(niche);
+  renderMonoStages(goal);
+  renderTracker(platform);
+}
+
+function renderCalendar(ideas, postingDays) {
+  const days = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  const daysFull = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
+  let idx = 0;
+  document.getElementById('weeklyCalendar').innerHTML = days.map((day,i) => {
+    const isPost = postingDays.includes(daysFull[i]);
+    const idea = isPost && ideas[idx] ? ideas[idx] : {type:'rest',idea:'Rest day — recharge & plan',emoji:'💤'};
+    if (isPost) idx++;
+    return `<div class="day-card ${isPost && idea.type!=='rest' ? 'active-day' : ''} ${idea.type==='rest' ? 'rest-day' : ''}" style="animation-delay:${i*60}ms">
+      <div class="day-name">${day}</div>
+      <div class="day-type-badge badge-${idea.type}">${idea.type}</div>
+      <div class="day-idea">${idea.emoji} ${idea.idea}</div>
+      <div class="day-time">${isPost && idea.type!=='rest' ? '📅 Post Day' : '😴 Rest'}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderMix(mix) {
+  document.getElementById('contentMix').innerHTML = mix.map(m =>
+    `<div class="mix-item"><div class="mix-icon">${m.icon}</div><div class="mix-type">${m.type}</div><div class="mix-pct">${m.pct}</div><div class="mix-desc">${m.desc}</div></div>`
+  ).join('');
+}
+
+function renderTips(tips) {
+  document.getElementById('growthTips').innerHTML = tips.map((t,i) =>
+    `<div class="tip-item"><div class="tip-num">0${i+1}</div><div class="tip-content"><strong>${t.title}</strong><p>${t.desc}</p></div></div>`
+  ).join('');
+}
+
+function renderSchedule(times) {
+  document.getElementById('postingSchedule').innerHTML = times.map(t =>
+    `<div class="schedule-item"><div class="schedule-dot"></div><div class="schedule-day">${t.day}</div><div class="schedule-time">${t.time}</div></div>`
+  ).join('');
+}
+
+// ── 30-Day Calendar ────────────────────────────────────────────────────
+const WEEK_THEMES = {
+  growth:    ['Week 1: Build Awareness','Week 2: Demonstrate Value','Week 3: Go Viral','Week 4: Convert & Retain'],
+  engagement:['Week 1: Start Conversations','Week 2: Share Your Story','Week 3: Community Spotlight','Week 4: Deep Connection'],
+  monetization:['Week 1: Build Trust','Week 2: Showcase Expertise','Week 3: Soft Sell','Week 4: Close & Convert'],
+  authority: ['Week 1: Establish POV','Week 2: Prove with Data','Week 3: Teach Deep','Week 4: Thought Leadership']
+};
+
+function render30DayCalendar(ideas, postingDays, goal) {
+  const types = ['educational','viral','storytelling','engagement','promotional','rest'];
+  const weekThemes = WEEK_THEMES[goal] || WEEK_THEMES.growth;
+  const dayNames = ['M','T','W','T','F','S','S'];
+  const daysFull = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
+
+  // Build 30 days across 4+ weeks
+  let html = '';
+  let ideaPool = [...ideas, ...ideas, ...ideas, ...ideas, ...ideas]; // repeat pool
+  let ideaIdx = 0;
+
+  for (let week = 0; week < 4; week++) {
+    // Week header spanning 7 cols
+    html += `<div class="month-day week-header" style="grid-column:1/-1"><div class="month-day-num">${week+1}</div><div class="month-day-idea">${weekThemes[week]}</div></div>`;
+    for (let d = 0; d < 7; d++) {
+      const dayNum = week * 7 + d + 1;
+      if (dayNum > 30) { html += `<div class="month-day rest-m"><div class="month-day-num">${dayNum}</div></div>`; continue; }
+      const dayFull = daysFull[d];
+      const isPost = postingDays.includes(dayFull);
+      const idea = isPost && ideaPool[ideaIdx] ? ideaPool[ideaIdx++] : {type:'rest', idea:'Rest & plan', emoji:'🌿'};
+      if (!isPost) ideaIdx; // don't advance for rest
+      const badgeClass = `badge-${idea.type}`;
+      html += `<div class="month-day ${idea.type==='rest'?'rest-m':''}">
+        <div class="month-day-num">${dayNum}</div>
+        <div class="month-day-type ${badgeClass}">${idea.type.slice(0,3)}</div>
+        <div class="month-day-idea">${idea.emoji} ${idea.idea.slice(0,28)}${idea.idea.length>28?'…':''}</div>
+      </div>`;
+    }
+  }
+  document.getElementById('monthCalendar').innerHTML = html;
+}
+
+// ── Algorithm Deep-Dive ────────────────────────────────────────────────
+const ALGO_DATA = {
+  youtube:[
+    {icon:'⏱️', title:'Watch Time & Retention is king', desc:'YouTube pushes videos where viewers watch past 50% of the total length. A 10-min video where people watch 7 mins outranks a 3-min video with 100% retention.', tag:'signal', tagLabel:'Key Signal'},
+    {icon:'🔁', title:'Click-Through Rate (CTR) triggers initial push', desc:'YouTube tests your video with a small audience first. If your CTR is above 4–6%, the algorithm widens distribution. Below that, it stops. Thumbnail + title is everything.', tag:'boost', tagLabel:'Boost Factor'},
+    {icon:'🚫', title:'Skip rate kills reach instantly', desc:'If viewers skip your video in the first 30 seconds, YouTube marks it as low quality and pulls it from recommendations. Never delay the value.', tag:'avoid', tagLabel:'Avoid'},
+    {icon:'📌', title:'Session time rewards you across the channel', desc:'When your video leads viewers to watch MORE YouTube (even other channels), the algorithm rewards YOU. End screens and playlists capture this.', tag:'boost', tagLabel:'Hidden Boost'},
+    {icon:'💬', title:'Comments & likes matter but less than you think', desc:'Engagement signals like/comment help but they\'re secondary to retention. A video with 500 comments and 40% retention loses to one with 50 comments and 70% retention.', tag:'signal', tagLabel:'Secondary Signal'}
+  ],
+  instagram:[
+    {icon:'⏰', title:'Recency + Relationship = feed placement', desc:'Instagram shows content from accounts you interact with most. Consistent posting + making followers reply/DM you = better placement for every future post.', tag:'boost', tagLabel:'Boost Factor'},
+    {icon:'📹', title:'Reels get 3–5x the organic reach of static posts', desc:'Instagram is actively pushing Reels to compete with TikTok. The algorithm gives Reels preferential distribution, especially in the first 48 hours after posting.', tag:'signal', tagLabel:'Key Signal'},
+    {icon:'💾', title:'Saves are the highest-value engagement signal', desc:'When someone saves your post, Instagram interprets it as "I want to come back to this" — the strongest quality signal available. Optimize for saves over likes.', tag:'boost', tagLabel:'Highest Value'},
+    {icon:'🚫', title:'Posting and going offline tanks reach', desc:'The algorithm measures your response rate in the first hour. If comments and DMs pile up unanswered, Instagram reduces distribution. Stay active post-publish.', tag:'avoid', tagLabel:'Avoid'},
+    {icon:'🔄', title:'Shares to DM are private but heavily weighted', desc:'When users share your post via DM, it\'s invisible to you but Instagram counts it as a top-tier signal. Create content that people naturally want to forward to friends.', tag:'signal', tagLabel:'Hidden Signal'}
+  ],
+  tiktok:[
+    {icon:'✅', title:'Completion rate is the #1 ranking factor', desc:'TikTok measures the percentage of your video people watch to the end. A 15-second video watched fully beats a 60-second video abandoned halfway. Keep it tight.', tag:'signal', tagLabel:'#1 Factor'},
+    {icon:'🔁', title:'Replays signal addictive content', desc:'If users replay your video even once, TikTok\'s algorithm treats this as extremely high quality content and aggressively expands its distribution.', tag:'boost', tagLabel:'Multiplier'},
+    {icon:'📤', title:'Shares are the growth catalyst', desc:'TikTok weighs shares more than likes or comments. A video that gets shared 100 times with 500 likes grows faster than a video with 5000 likes and 50 shares.', tag:'boost', tagLabel:'Growth Driver'},
+    {icon:'🚫', title:'Avoid posting more than 3-4x per day', desc:'Over-posting dilutes your account quality score. TikTok evaluates your account\'s average performance — flooding the feed with weak content drags down your strong content.', tag:'avoid', tagLabel:'Avoid'},
+    {icon:'⚡', title:'First 3 hours determine the video\'s ceiling', desc:'TikTok\'s distribution algorithm makes most of its decision in the first 3 hours. Post when your audience is most active and engage hard in that window.', tag:'signal', tagLabel:'Timing Signal'}
+  ],
+  twitter:[
+    {icon:'💬', title:'Replies are the top engagement signal on X', desc:'X\'s algorithm prioritizes posts with fast, substantive replies. A post with 20 thoughtful replies outranks a post with 200 likes. Ask questions that demand responses.', tag:'signal', tagLabel:'#1 Signal'},
+    {icon:'🔁', title:'Quote tweets amplify more than retweets', desc:'When someone quote tweets with their own commentary, X treats it as a content endorsement + a new piece of content. This is the most powerful organic amplification on the platform.', tag:'boost', tagLabel:'Amplifier'},
+    {icon:'🔖', title:'Bookmarks replaced likes as quality signal', desc:'X now uses bookmarks as a strong quality indicator, similar to Instagram\'s saves. Content that gets bookmarked gets surfaced more in For You feeds.', tag:'boost', tagLabel:'New Signal'},
+    {icon:'🚫', title:'External links in the post body are penalized', desc:'X actively suppresses posts containing links in the main body — they want users to stay on platform. Put links in replies or the first comment instead.', tag:'avoid', tagLabel:'Avoid'},
+    {icon:'⏱️', title:'Consistency in posting times trains the algorithm', desc:'X\'s algorithm learns your posting pattern. Consistent timing (same window daily) improves your reach compared to random posting schedules.', tag:'signal', tagLabel:'Consistency Signal'}
+  ],
+  linkedin:[
+    {icon:'⏱️', title:'The first 60–90 minutes are critical',desc:'LinkedIn measures engagement velocity. If your post gets comments and likes in the first 60 minutes, it gets pushed to a wider audience. Engage your network immediately after posting.', tag:'signal', tagLabel:'Critical Window'},
+    {icon:'💬', title:'Comments are weighted 10x over reactions',desc:'LinkedIn values substantive comments far more than likes or reactions. A post with 10 real comments reaches more people than one with 500 likes and 3 comments.', tag:'boost', tagLabel:'Highest Weight'},
+    {icon:'📄', title:'Native documents (carousels) get maximum reach',desc:'LinkedIn pushes PDF-format carousel posts because they keep users on platform longer. These consistently outperform text posts and external link posts.', tag:'boost', tagLabel:'Format Boost'},
+    {icon:'🚫', title:'Never post links in the original post body',desc:'Like X, LinkedIn actively suppresses posts that contain external links in the main body. Always use "link in first comment" — this is not optional advice.', tag:'avoid', tagLabel:'Avoid'},
+    {icon:'🤝', title:'Your network\'s network sees your content',desc:'When a 1st connection engages with your post, their connections (your 2nd connections) see it in their feed. Engaging with people who have large networks multiplies your organic reach.', tag:'signal', tagLabel:'Network Effect'}
+  ],
+  podcast:[
+    {icon:'⭐', title:'Reviews & ratings drive directory placement',desc:'Apple Podcasts and Spotify heavily weight review count and star ratings for search placement. A new show with 50 reviews outranks a 3-year-old show with 10. Ask explicitly — early and often.', tag:'signal', tagLabel:'Directory Signal'},
+    {icon:'📈', title:'Download velocity in the first 48 hours matters',desc:'Platforms like Spotify measure downloads per episode in the first 48 hours to determine "hot" content. Alert your email list and social followers immediately on release.', tag:'boost', tagLabel:'Launch Window'},
+    {icon:'🔁', title:'Completion rate affects Spotify recommendations',desc:'Spotify measures how much of your episode people actually listen to. Episodes with 70%+ completion get placed in algorithmic recommendations (Podcast Charts, Daily Mixes).', tag:'signal', tagLabel:'Key Metric'},
+    {icon:'🚫', title:'Long intros kill listener retention',desc:'Podcast analytics consistently show that 20–40% of listeners drop off in the first 60 seconds. Intros longer than 90 seconds are one of the biggest self-inflicted growth blockers.', tag:'avoid', tagLabel:'Avoid'},
+    {icon:'🔎', title:'Show notes & titles drive SEO discovery',desc:'Most podcast discovery happens through search. Keyword-optimized episode titles and detailed show notes get indexed by Google and appear in search results — this is underused by 95% of creators.', tag:'boost', tagLabel:'SEO Boost'}
+  ],
+  newsletter:[
+    {icon:'📬', title:'Open rate is the primary deliverability signal',desc:'Email providers (Gmail, Outlook) use your open rate to determine if your emails are wanted. Below 20% consistently = emails start going to spam. Maintain list hygiene aggressively.', tag:'signal', tagLabel:'#1 Signal'},
+    {icon:'⏰', title:'Send time matters — test Tuesday & Thursday 7–9am',desc:'For most niches, Tuesday and Thursday mornings produce the highest open rates. Your specific audience may differ — A/B test your send time over 8 weeks before drawing conclusions.', tag:'boost', tagLabel:'Timing'},
+    {icon:'🔗', title:'Click-through rate determines email quality score',desc:'Providers measure not just opens but clicks. A newsletter with 40% open rate but 0.5% CTR looks worse than one with 25% opens and 4% CTR. Every email should have one clear CTA.', tag:'signal', tagLabel:'Quality Signal'},
+    {icon:'🚫', title:'Spam trigger words in subject lines wreck deliverability',desc:'Words like "Free," "Guarantee," "Winner," "Cash," and excessive punctuation (!!!) trigger spam filters. Test your subject lines with a tool like Mail-Tester before sending to your full list.', tag:'avoid', tagLabel:'Avoid'},
+    {icon:'📋', title:'Confirmed opt-in lists get 3x better deliverability',desc:'Double opt-in (where subscribers confirm their email) reduces spam complaints and bounces dramatically. Your list grows slower but your deliverability and engagement are far superior.', tag:'boost', tagLabel:'List Quality'}
+  ],
+  threads:[
+    {icon:'💬', title:'Replies in the first 30 minutes = extended reach',desc:'Threads\' algorithm (which shares infrastructure with Instagram) prioritizes posts with rapid reply engagement in the first 30 minutes. A hot comment thread keeps a post alive for hours.', tag:'signal', tagLabel:'Key Window'},
+    {icon:'🔁', title:'Reposts with quotes carry more weight than plain reposts',desc:'Like X, quote-style reposts on Threads create a new conversation thread that credits your original. This is currently one of the strongest distribution signals on the platform.', tag:'boost', tagLabel:'Amplifier'},
+    {icon:'📝', title:'Threads rewards authenticity over polish',desc:'Threads\' algorithm surfaces content that feels human and conversational. Overly polished brand content consistently underperforms compared to raw, personal, unfiltered posts.', tag:'boost', tagLabel:'Tone Signal'},
+    {icon:'🚫', title:'Cross-posting identical content from Instagram hurts reach',desc:'Threads detects content reposted directly from Instagram (same image, same caption) and reduces its distribution. Always write native, platform-specific content.', tag:'avoid', tagLabel:'Avoid'},
+    {icon:'🌐', title:'Instagram cross-promotion drives Threads followers fast',desc:'Threads is tied to your Instagram account. Mentioning your Threads content in Instagram Stories and vice versa creates a follower flywheel between the two platforms.', tag:'signal', tagLabel:'Cross-Platform'}
+  ]
+};
+
+function renderAlgoDive(platform) {
+  const data = ALGO_DATA[platform] || ALGO_DATA.instagram;
+  document.getElementById('algoCards').innerHTML = data.map(d => `
+    <div class="algo-card">
+      <div class="algo-icon">${d.icon}</div>
+      <div class="algo-body">
+        <strong>${d.title}</strong>
+        <p>${d.desc}</p>
+        <span class="algo-tag ${d.tag}">${d.tagLabel}</span>
+      </div>
+    </div>`).join('');
+}
+
+// ── Viral Hook Formulas ────────────────────────────────────────────────
+const HOOKS = {
+  students:[
+    {label:'Curiosity',text:'The study method your school never taught you — and why it <span>triples</span> retention in half the time.'},
+    {label:'Controversy',text:'Unpopular opinion: Studying for <span>8 hours straight</span> is making you dumber. Here\'s what actually works.'},
+    {label:'Number',text:'<span>7 things</span> every student does that secretly tanks their GPA — I did all of them.'},
+    {label:'Story',text:'I failed my first exam. Badly. Here\'s the <span>exact system</span> I built that got me to the top 5% a year later.'},
+    {label:'Challenge',text:'I studied using only <span>spaced repetition</span> for 30 days. The results were not what I expected.'},
+    {label:'POV',text:'POV: You\'re watching this instead of studying. Let me give you a <span>10-minute hack</span> that makes up for it.'}
+  ],
+  finance:[
+    {label:'Curiosity',text:'The one financial move <span>most Indians</span> skip — and it\'s costing them ₹20L+ over a lifetime.'},
+    {label:'Controversy',text:'Your financial advisor doesn\'t want you to know this about <span>index funds</span>.'},
+    {label:'Number',text:'<span>₹1000/month</span> at 22 years old becomes this much by retirement. The number will shock you.'},
+    {label:'Story',text:'I was ₹2 lakh in debt at 24. Here\'s the <span>exact plan</span> I used to clear it and start investing in 18 months.'},
+    {label:'Challenge',text:'I tracked every rupee I spent for <span>90 days</span>. Here\'s what I found (and what I immediately changed).'},
+    {label:'POV',text:'POV: You\'re 30 and haven\'t started investing yet. <span>Here\'s what to do first</span> — no fluff, no shame.'}
+  ],
+  fitness:[
+    {label:'Curiosity',text:'The reason you\'re not seeing gym results isn\'t your workout. It\'s <span>this one thing</span> you\'re doing wrong every day.'},
+    {label:'Controversy',text:'I stopped doing cardio for <span>60 days</span>. My body composition actually improved. Here\'s the data.'},
+    {label:'Number',text:'<span>3 exercises</span> are responsible for 80% of the muscle growth most people experience. Are you doing them right?'},
+    {label:'Story',text:'At my lowest, I couldn\'t do 5 push-ups. Here\'s the <span>exact progression</span> that got me to 100 in 6 months.'},
+    {label:'Challenge',text:'I ate the same <span>high-protein meal prep</span> for 30 days. Here\'s what happened to my body (with photos).'},
+    {label:'POV',text:'POV: You just joined the gym. <span>Here\'s what to do in week 1</span> so you actually come back in week 2.'}
+  ],
+  tech:[
+    {label:'Curiosity',text:'The coding skill that <span>separates junior devs</span> from senior devs — and it\'s not what you think.'},
+    {label:'Controversy',text:'Most online coding courses are <span>wasting your time</span>. Here\'s what actually gets you hired.'},
+    {label:'Number',text:'I built <span>12 projects</span> before landing my first dev job. Here are the only 3 that actually mattered.'},
+    {label:'Story',text:'I got rejected by 47 companies before landing a ₹20LPA offer. Here\'s the <span>exact thing</span> I changed.'},
+    {label:'Challenge',text:'I coded for <span>2 hours every day</span> for 90 days with zero prior experience. Here\'s what I built.'},
+    {label:'POV',text:'POV: It\'s your first day at a new dev job. <span>Do these 5 things</span> in week 1 and your manager will love you.'}
+  ],
+  business:[
+    {label:'Curiosity',text:'The business model that generates ₹1L/month with <span>zero employees</span> and under ₹10K to start.'},
+    {label:'Controversy',text:'Stop building the product first. <span>Do this instead</span> — and you\'ll make your first sale before writing a single line of code.'},
+    {label:'Number',text:'<span>5 decisions</span> I made in my first startup that cost me ₹5 lakh. Read this before you make the same mistakes.'},
+    {label:'Story',text:'I quit my ₹18LPA job to start a business with ₹50K saved. Here\'s what happened in <span>month 1</span>.'},
+    {label:'Challenge',text:'I tried to validate a business idea in <span>48 hours</span> with no budget. Here\'s exactly what I did (and what worked).'},
+    {label:'POV',text:'POV: You have a business idea but <span>zero clue where to start</span>. Here\'s the exact first step.'}
+  ]
+};
+
+function getHooks(niche) {
+  return HOOKS[niche] || [
+    {label:'Curiosity', text:`The one thing about <span>${niche}</span> that nobody talks about — but everyone needs to know.`},
+    {label:'Controversy', text:`Unpopular opinion: Most advice about <span>${niche}</span> is completely wrong. Here\'s what actually works.`},
+    {label:'Number', text:`<span>5 mistakes</span> beginners make in ${niche} — I made all of them so you don\'t have to.`},
+    {label:'Story', text:`I was terrible at <span>${niche}</span> for 2 years. Here\'s the exact moment everything clicked.`},
+    {label:'Challenge', text:`I committed to <span>${niche}</span> every single day for 30 days. Here\'s the honest result.`},
+    {label:'POV', text:`POV: You\'re just starting with <span>${niche}</span>. Here\'s what I wish someone told me on day 1.`}
+  ];
+}
+
+function renderHooks(niche) {
+  const hooks = getHooks(niche);
+  document.getElementById('hooksGrid').innerHTML = hooks.map(h => `
+    <div class="hook-item">
+      <div class="hook-label">${h.label}</div>
+      <div class="hook-text">${h.text}</div>
+    </div>`).join('');
+}
+
+// ── Monetization Roadmap ────────────────────────────────────────────────
+const MONO_STAGES = {
+  growth:[
+    {range:'0 – 500 followers', title:'Build your foundation', desc:'Do NOT focus on monetization yet. Your only job is consistency and quality. Treat every post as a portfolio piece. No audience = no income.', actions:['Post consistently','Study your analytics','Find your best format']},
+    {range:'500 – 2,000 followers', title:'Start building assets', desc:'Launch an email list or a free lead magnet. You\'re building an audience you own — independent of any algorithm. This is your long-term leverage.', actions:['Start email list','Create a free resource','Add link in bio']},
+    {range:'2,000 – 10,000 followers', title:'Earn first income', desc:'You now have enough social proof for affiliate partnerships and small brand deals. Reach out to 5 brands in your niche with a simple pitch. Expect ₹2,000–₹15,000 per deal at this stage.', actions:['Affiliate marketing','Micro brand deals','Sell a digital product']},
+    {range:'10,000 – 50,000 followers', title:'Scale revenue streams', desc:'At 10K+ you can launch paid products (courses, templates, coaching). One digital product at ₹999–₹4,999 launched to even 1% of your audience generates meaningful income.', actions:['Launch paid product','Charge for coaching','Premium brand deals']},
+    {range:'50,000+ followers', title:'Build a business', desc:'You are now a media business. Diversify: brand partnerships, your own product line, paid community, speaking, or even a SaaS tool for your audience. One revenue stream = fragile. Four = freedom.', actions:['Long-term brand contracts','Scale your product','Paid community','Speaking/consulting']}
+  ],
+  engagement:[
+    {range:'0 – 500 followers', title:'Earn trust first', desc:'Every piece of content at this stage is about proving you care about your audience. Respond to every comment. Thank everyone who follows. You\'re building relationships, not revenue.', actions:['Reply to everyone','Ask genuine questions','Show up consistently']},
+    {range:'500 – 2,000 followers', title:'Create a community space', desc:'Start a free Telegram, Discord, or WhatsApp group for your most engaged followers. This becomes your inner circle — and later, your most loyal buyers.', actions:['Free community group','Weekly Q&A','Content from their questions']},
+    {range:'2,000 – 10,000 followers', title:'Launch a paid community', desc:'A paid membership at ₹299–₹999/month to your community of 2K+ engaged followers can realistically generate ₹15,000–₹50,000/month if even 5-10% convert.', actions:['Paid membership tier','Exclusive content','Monthly live calls']},
+    {range:'10,000 – 50,000 followers', title:'Deepen monetization', desc:'Engagement-first audiences buy from people they trust. Launch high-ticket coaching (₹10,000–₹50,000) to a small number of committed community members.', actions:['1:1 or group coaching','Community-built products','Brand ambassador deals']},
+    {range:'50,000+ followers', title:'Community-powered business', desc:'Your highly engaged audience is your moat. Build products with your community (not just for them). They become co-creators, brand ambassadors, and your most effective marketers.', actions:['Co-created products','Community governance','Revenue sharing model']}
+  ],
+  monetization:[
+    {range:'0 – 500 followers', title:'Prepare your offers now', desc:'Don\'t wait to build your products. Start creating a digital product, outline a course, or define your service offer while building your audience. Launch at 500, not 5,000.', actions:['Outline your offer','Set up payment page','Build landing page']},
+    {range:'500 – 2,000 followers', title:'Validate with pre-sales', desc:'Announce your product before it\'s finished. Offer early access at a discount to your first 500 followers. Even 5 pre-sales at ₹1,999 = proof of concept and ₹10,000 in the bank.', actions:['Pre-sell your product','Collect testimonials','Refine based on buyers']},
+    {range:'2,000 – 10,000 followers', title:'Stack your revenue', desc:'Layer income streams: affiliate commissions, your own product, and brand deals. At 5K followers you can realistically earn ₹30,000–₹80,000/month with multiple channels active.', actions:['Affiliate income','Own product sales','Brand partnerships']},
+    {range:'10,000 – 50,000 followers', title:'Systemize your sales', desc:'Build email sequences that sell automatically. Set up evergreen funnels. At 20K followers, your content should be generating sales 24/7 — not just during launch windows.', actions:['Email sales funnel','Evergreen product launch','Upsell existing buyers']},
+    {range:'50,000+ followers', title:'Diversify and scale', desc:'You have leverage. License your content, launch a premium mastermind, take equity partnerships with aligned brands, or raise funding. Your audience is your asset — protect and grow it.', actions:['Premium mastermind','Brand equity deals','Licensing content','SaaS / tool for niche']}
+  ],
+  authority:[
+    {range:'0 – 500 followers', title:'Build your POV', desc:'At this stage, your job is to develop a clear, distinctive point of view that nobody else in your niche has. Read deeply. Disagree publicly. Form original opinions. Consistency of voice builds authority faster than volume of content.', actions:['Define your framework','Write your POV essay','Disagree with mainstream']},
+    {range:'500 – 2,000 followers', title:'Get published beyond your platform', desc:'Guest posts, podcast appearances, and newsletter collaborations with platforms bigger than yours borrow credibility. Even one feature in a respected publication accelerates your authority 10x.', actions:['Guest post outreach','Podcast guest appearances','Co-author a piece']},
+    {range:'2,000 – 10,000 followers', title:'Earn from expertise', desc:'Consulting calls, advisory roles, and premium workshops are high-converting for authority creators. At 5K followers with a specific niche, a ₹10,000 2-hour consulting call is realistic.', actions:['Consulting offers','Workshops / masterclasses','Become a source for press']},
+    {range:'10,000 – 50,000 followers', title:'Launch signature content', desc:'Write the "definitive guide" to your niche. Create the course everyone in your space recommends. Publish the research that others cite. Signature content competes forever.', actions:['Signature course','In-depth research piece','Keynote speaking']},
+    {range:'50,000+ followers', title:'Monetize your category', desc:'At this scale, you don\'t just earn from your audience — you set the agenda for your category. Write a book, launch a media company, charge for endorsements, or create a certification that others pay for.', actions:['Write a book','Category certification','Media company','High-ticket advisory']}
+  ]
+};
+
+function renderMonoStages(goal) {
+  const stages = MONO_STAGES[goal] || MONO_STAGES.growth;
+  document.getElementById('monoStages').innerHTML = stages.map((s, i) => `
+    <div class="mono-stage">
+      ${i < stages.length - 1 ? '<div class="mono-stage-line"></div>' : ''}
+      <div class="mono-num">${i+1}</div>
+      <div class="mono-body">
+        <div class="mono-range">${s.range}</div>
+        <strong>${s.title}</strong>
+        <p>${s.desc}</p>
+        <div class="mono-actions">${s.actions.map(a => `<span class="mono-action-tag">${a}</span>`).join('')}</div>
+      </div>
+    </div>`).join('');
+}
+
+// ── Performance Tracker ─────────────────────────────────────────────────
+function renderTracker(platform) {
+  const metrics = {
+    youtube: ['Views','Watch Time (hrs)','Subscribers Gained','CTR %','Avg View Duration'],
+    instagram: ['Reach','Impressions','Followers Gained','Profile Visits','Saves'],
+    tiktok: ['Views','Completion Rate %','Followers Gained','Shares','Profile Clicks'],
+    twitter: ['Impressions','Engagements','Followers Gained','Link Clicks','Profile Visits'],
+    linkedin: ['Impressions','Reactions','Comments','Followers Gained','Profile Views'],
+    podcast: ['Downloads','New Subscribers','Episode Completion %','Reviews','Shares'],
+    newsletter: ['Subscribers','Open Rate %','CTR %','Unsubscribes','New Sign-ups'],
+    threads: ['Views','Replies','Reposts','Followers Gained','Profile Clicks']
+  };
+  const cols = metrics[platform] || metrics.instagram;
+
+  const existing = JSON.parse(localStorage.getItem('contentOS_tracker_' + platform) || '[]');
+
+  const inputFields = cols.map(c => `
+    <div class="tracker-field">
+      <label>${c}</label>
+      <input type="number" class="tracker-input" id="tinput_${c.replace(/\s/g,'_')}" placeholder="0" min="0" />
+    </div>`).join('');
+
+  document.getElementById('trackerWrap').innerHTML = `
+    <div class="tracker-add">
+      <div class="tracker-field">
+        <label>Week</label>
+        <input type="text" class="tracker-input" id="tinput_week" placeholder="e.g. Apr W1" style="min-width:90px" />
+      </div>
+      ${inputFields}
+      <button class="btn-log" id="logTracker">+ Log Week</button>
+    </div>
+    <div class="tracker-table-wrap" id="trackerTableWrap"></div>`;
+
+  renderTrackerTable(platform, cols, existing);
+
+  document.getElementById('logTracker').addEventListener('click', () => {
+    const week = document.getElementById('tinput_week').value.trim();
+    if (!week) { showToast('⚠️ Enter a week label'); return; }
+    const row = {week};
+    cols.forEach(c => {
+      const val = document.getElementById('tinput_' + c.replace(/\s/g,'_')).value;
+      row[c] = val !== '' ? Number(val) : '-';
+    });
+    const data = JSON.parse(localStorage.getItem('contentOS_tracker_' + platform) || '[]');
+    data.unshift(row);
+    localStorage.setItem('contentOS_tracker_' + platform, JSON.stringify(data));
+    // Clear inputs
+    document.getElementById('tinput_week').value = '';
+    cols.forEach(c => { document.getElementById('tinput_' + c.replace(/\s/g,'_')).value = ''; });
+    renderTrackerTable(platform, cols, data);
+    showToast('✅ Week logged!');
+  });
+}
+
+function renderTrackerTable(platform, cols, data) {
+  const wrap = document.getElementById('trackerTableWrap');
+  if (!data.length) {
+    wrap.innerHTML = `<div class="tracker-empty">No data yet — log your first week above to start tracking.</div>`;
+    return;
+  }
+  wrap.innerHTML = `<table class="tracker-table">
+    <thead><tr>
+      <th>Week</th>
+      ${cols.map(c => `<th>${c}</th>`).join('')}
+      <th></th>
+    </tr></thead>
+    <tbody>
+      ${data.map((row, i) => `<tr>
+        <td><strong>${row.week}</strong></td>
+        ${cols.map(c => `<td>${row[c] !== undefined ? row[c] : '-'}</td>`).join('')}
+        <td><button class="btn-del-row" data-idx="${i}" title="Delete">✕</button></td>
+      </tr>`).join('')}
+    </tbody>
+  </table>`;
+  wrap.querySelectorAll('.btn-del-row').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const d = JSON.parse(localStorage.getItem('contentOS_tracker_' + platform) || '[]');
+      d.splice(Number(btn.dataset.idx), 1);
+      localStorage.setItem('contentOS_tracker_' + platform, JSON.stringify(d));
+      renderTrackerTable(platform, cols, d);
+      showToast('🗑️ Row deleted');
+    });
+  });
+}
+
+// ── Actions ────────────────────────────────────────────────────────────
+function copyPlan() {
+  if (!currentPlan) return;
+  const {niche, goal, platform, time, ideas, tips, mix, postingDays} = currentPlan;
+  const days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+  const daysFull = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
+  let txt = `=== MY CONTENT STRATEGY (ContentOS) ===\n`;
+  txt += `Niche: ${nicheLabels[niche]||niche}\nGoal: ${goalLabels[goal]||goal}\nPlatform: ${platformLabels[platform]||platform}\nTime: ${timeLabels[time]||time}\n\n`;
+  txt += `── WEEKLY CONTENT IDEAS ──\n`;
+  let idx=0;
+  days.forEach((day,i) => {
+    const isPost = postingDays.includes(daysFull[i]);
+    const idea = isPost && ideas[idx] ? ideas[idx] : null;
+    if(isPost) idx++;
+    txt += `${day}: ${idea ? `${idea.emoji} ${idea.idea} [${idea.type}]` : '🌿 Rest Day'}\n`;
+  });
+  txt += `\n── CONTENT MIX ──\n`;
+  mix.forEach(m => { txt += `${m.type}: ${m.pct} — ${m.desc}\n`; });
+  txt += `\n── GROWTH TIPS ──\n`;
+  tips.forEach((t,i) => { txt += `${i+1}. ${t.title}: ${t.desc}\n`; });
+  txt += `\nGenerated by ContentOS`;
+  navigator.clipboard.writeText(txt).then(() => toast('✅ Plan copied to clipboard!')).catch(() => toast('⚠️ Copy failed'));
+}
+
+function regenPlan() {
+  if (!currentPlan) return;
+  const plan = buildPlan();
+  plan.ideas = [...plan.ideas.slice(1), plan.ideas[0]];
+  currentPlan = plan;
+  renderPlan(plan);
+  toast('🔄 Plan regenerated!');
+}
+
+function savePlan() {
+  if (!currentPlan) return;
+  const saves = JSON.parse(localStorage.getItem('contentOS_saves')||'[]');
+  saves.unshift({id:Date.now(), plan:currentPlan, savedAt: new Date().toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'})});
+  if (saves.length > 5) saves.pop();
+  localStorage.setItem('contentOS_saves', JSON.stringify(saves));
+  toast('💾 Plan saved!');
+  loadSaved();
+}
+
+function loadSaved() {
+  const saves = JSON.parse(localStorage.getItem('contentOS_saves')||'[]');
+  const sec = document.getElementById('savedSection');
+  if (!saves.length) { sec.style.display='none'; return; }
+  sec.style.display = 'block';
+  document.getElementById('savedGrid').innerHTML = saves.map(s => `
+    <div class="saved-card">
+      <div class="saved-card-title">${nicheLabels[s.plan.niche]||s.plan.niche}</div>
+      <div class="saved-card-meta">${goalLabels[s.plan.goal]||s.plan.goal} · ${platformLabels[s.plan.platform]||s.plan.platform} · Saved ${s.savedAt}</div>
+      <div class="saved-card-actions">
+        <button class="btn-load" onclick="loadSaveById(${s.id})">Load Plan</button>
+        <button class="btn-delete" onclick="deleteSave(${s.id})">Delete</button>
+      </div>
+    </div>`).join('');
+}
+
+function loadSaveById(id) {
+  const saves = JSON.parse(localStorage.getItem('contentOS_saves')||'[]');
+  const s = saves.find(x => x.id===id);
+  if (!s) return;
+  currentPlan = s.plan;
+  Object.assign(sel, {niche:s.plan.niche,goal:s.plan.goal,platform:s.plan.platform,time:s.plan.time});
+  renderPlan(s.plan);
+  document.getElementById('builder').scrollIntoView({behavior:'smooth'});
+  toast('📂 Plan loaded!');
+}
+
+function deleteSave(id) {
+  let saves = JSON.parse(localStorage.getItem('contentOS_saves')||'[]');
+  saves = saves.filter(s => s.id!==id);
+  localStorage.setItem('contentOS_saves', JSON.stringify(saves));
+  loadSaved();
+  toast('🗑️ Deleted');
+}
+
+// ── Helpers ────────────────────────────────────────────────────────────
+function scrollToBuilder() {
+  document.getElementById('builder').scrollIntoView({behavior:'smooth'});
+}
+
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// ── Init ───────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  initChips();
+  initButtons();
+  loadSaved();
+});
+</script>
+</body>
+</html>
